@@ -1,40 +1,65 @@
+/* =========================================================
+   PRESTIGE DRIVE
+   CLEAN GLOBAL DESIGN SYSTEM
+========================================================= */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --black: #050505;
+  --black-soft: #090909;
+  --black-card: #101010;
+  --black-card-hover: #141414;
+
+  --white: #ffffff;
+  --text: #ece9e3;
+  --text-muted: #aaa59d;
+  --text-dark: #747069;
+
+  --gold: #c6a15b;
+  --gold-light: #e3c47d;
+  --gold-dark: #8f6a2e;
+
+  --border: rgba(198, 161, 91, 0.25);
+  --border-light: rgba(255, 255, 255, 0.09);
+
+  --radius-small: 10px;
+  --radius-medium: 18px;
+  --radius-large: 28px;
+
+  --shadow:
+    0 30px 80px rgba(0, 0, 0, 0.38);
+
+  --container: 1200px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html {
-  height: 100%;
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+/* =========================================================
+   RESET
+========================================================= */
 
 * {
   box-sizing: border-box;
-  padding: 0;
   margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: var(--black);
+  color: var(--text);
+  font-family: var(--font-body), Arial, sans-serif;
+  line-height: 1.65;
+}
+
+body,
+button,
+input,
+textarea,
+select {
+  font-family: var(--font-body), Arial, sans-serif;
 }
 
 a {
@@ -42,8 +67,6560 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+button {
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+ul {
+  list-style: none;
+}
+
+main {
+  overflow: hidden;
+}
+
+::selection {
+  background: var(--gold);
+  color: #050505;
+}
+
+/* =========================================================
+   LAYOUT
+========================================================= */
+
+.page-container {
+  width: min(
+    var(--container),
+    calc(100% - 48px)
+  );
+  margin-inline: auto;
+}
+
+/* =========================================================
+   TYPOGRAPHY
+========================================================= */
+
+.section-label {
+  display: inline-block;
+  margin-bottom: 17px;
+  color: var(--gold-light);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.section-heading {
+  max-width: 760px;
+}
+
+.section-heading.centered {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.section-heading h2,
+.intro-heading h2,
+.why-heading h2,
+.subpage-cta h2,
+.gallery-page-heading h2,
+.contact-page-info h2,
+.contact-map-card h2 {
+  color: var(--white);
+  font-family: var(--font-heading), Georgia, serif;
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+}
+
+.section-heading h2 {
+  font-size: clamp(42px, 5vw, 68px);
+}
+
+.section-subtitle {
+  max-width: 620px;
+  margin-top: 20px;
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+.section-heading.centered .section-subtitle {
+  margin-inline: auto;
+}
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.button {
+  min-height: 54px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 26px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-small);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-align: center;
+  text-transform: uppercase;
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+}
+
+.button-gold {
+  border-color: rgba(255, 235, 190, 0.35);
+  background:
+    linear-gradient(
+      135deg,
+      #e6c77f,
+      #c39a50 55%,
+      #a67832
+    );
+  color: #080706;
+  box-shadow:
+    0 14px 35px rgba(198, 161, 91, 0.22);
+}
+
+.button-gold:hover {
+  background:
+    linear-gradient(
+      135deg,
+      #f0d897,
+      #d3aa5d 55%,
+      #b98b3d
+    );
+  box-shadow:
+    0 18px 42px rgba(198, 161, 91, 0.32);
+}
+
+.button-outline,
+.button-outline-dark {
+  border-color: rgba(224, 193, 123, 0.48);
+  background: rgba(255, 255, 255, 0.015);
+  color: var(--gold-light);
+}
+
+.button-outline:hover,
+.button-outline-dark:hover {
+  border-color: var(--gold-light);
+  background: rgba(198, 161, 91, 0.1);
+  color: var(--gold-light);
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.site-header {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+  left: 0;
+  border-bottom: 1px solid transparent;
+  background: rgba(5, 5, 5, 0.72);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.site-header-scrolled {
+  border-bottom-color: var(--border-light);
+  background: rgba(5, 5, 5, 0.95);
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.28);
+}
+
+.site-header-inner {
+  min-height: 88px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 34px;
+}
+
+.site-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+  flex-shrink: 0;
+}
+
+.site-logo-image {
+  position: relative;
+  width: 54px;
+  height: 54px;
+  flex-shrink: 0;
+  overflow: hidden;
+  border: 1px solid rgba(198, 161, 91, 0.34);
+  border-radius: 10px;
+  background: #090909;
+}
+
+.site-logo-image img {
+  object-fit: cover;
+}
+
+.site-logo-copy {
+  display: grid;
+  gap: 3px;
+}
+
+.site-logo-copy strong {
+  color: var(--gold-light);
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.site-logo-copy small {
+  color: #8e8982;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.site-header-menu {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.site-navigation {
+  display: flex;
+  align-items: center;
+  gap: 27px;
+}
+
+.site-navigation a {
+  position: relative;
+  padding-block: 32px;
+  color: #c9c6c0;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: color 0.25s ease;
+}
+
+.site-navigation a::after {
+  position: absolute;
+  right: 0;
+  bottom: 24px;
+  left: 0;
+  height: 1px;
+  background: var(--gold);
+  content: "";
+  transform: scaleX(0);
+  transition: transform 0.25s ease;
+}
+
+.site-navigation a:hover,
+.site-navigation a.active {
+  color: var(--gold-light);
+}
+
+.site-navigation a:hover::after,
+.site-navigation a.active::after {
+  transform: scaleX(1);
+}
+
+.site-header-phone {
+  min-width: 158px;
+  padding: 10px 16px;
+  display: grid;
+  gap: 1px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-small);
+  background: rgba(198, 161, 91, 0.05);
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.site-header-phone:hover {
+  border-color: var(--gold-light);
+  background: rgba(198, 161, 91, 0.11);
+}
+
+.site-header-phone span {
+  color: #7e7a74;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.site-header-phone strong {
+  color: var(--gold-light);
+  font-size: 13px;
+}
+
+.menu-toggle {
+  width: 44px;
+  height: 44px;
+  display: none;
+  padding: 12px;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-small);
+  background: #0c0c0c;
+}
+
+.menu-toggle span {
+  width: 100%;
+  height: 1px;
+  display: block;
+  background: var(--gold-light);
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.menu-toggle span + span {
+  margin-top: 6px;
+}
+
+.menu-toggle.is-open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menu-toggle.is-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.is-open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* =========================================================
+   HOMEPAGE HERO
+   Auto zostáva iba na domovskej stránke
+========================================================= */
+
+.luxury-hero,
+.hero-section {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: #030303;
+}
+
+.luxury-hero-background {
+  position: absolute;
+  inset: 0;
+  background:
+    url("/images/hero-volvo.png")
+    center 58% / cover no-repeat;
+}
+
+.luxury-hero-overlay,
+.hero-shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.97) 0%,
+      rgba(0, 0, 0, 0.86) 32%,
+      rgba(0, 0, 0, 0.5) 58%,
+      rgba(0, 0, 0, 0.2) 100%
+    ),
+    linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.96),
+      transparent 45%
+    );
+}
+
+.luxury-hero-container,
+.hero-content {
+  transform: translateX(-60px);
+  position: relative;
+  z-index: 2;
+
+  width: min(var(--container), calc(100% - 48px));
+
+  margin-left: max(50px, calc((100vw - var(--container)) / 2 - 40px));
+  margin-right: auto;
+
+  padding-top: 160px;
+  padding-bottom: 130px;
+}
+
+.luxury-hero-content {
+  max-width: 790px;
+}
+
+.luxury-hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 23px;
+}
+
+.luxury-hero-eyebrow-line {
+  width: 44px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.luxury-hero-eyebrow p {
+  color: var(--gold-light);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+.luxury-hero-title,
+.hero-title {
+  max-width: 800px;
+  color: var(--white);
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: clamp(58px, 7vw, 98px);
+  font-weight: 400;
+  line-height: 0.94;
+  letter-spacing: -0.04em;
+  text-shadow: 0 18px 52px rgba(0, 0, 0, 0.5);
+}
+
+.luxury-hero-title span,
+.luxury-hero-title strong,
+.hero-title span,
+.hero-title strong {
+  display: block;
+}
+
+.luxury-hero-title strong,
+.hero-title strong {
+  margin-block: 8px;
+  background:
+    linear-gradient(
+      100deg,
+      #a77c34,
+      #edcf88 45%,
+      #c39648 78%,
+      #efd58d
+    );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-weight: 500;
+  -webkit-text-fill-color: transparent;
+}
+
+.luxury-hero-description,
+.hero-text {
+  max-width: 610px;
+  margin-top: 28px;
+  padding-left: 17px;
+  border-left: 2px solid rgba(224, 193, 123, 0.55);
+  color: #cac6bf;
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+.luxury-hero-actions,
+.hero-actions {
+  margin-top: 35px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.luxury-button {
+  min-height: 54px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 26px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-small);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.luxury-button:hover {
+  transform: translateY(-3px);
+}
+
+.luxury-button-primary {
+  background:
+    linear-gradient(
+      135deg,
+      #e6c77f,
+      #be9347
+    );
+  color: #070707;
+}
+
+.luxury-button-secondary {
+  border-color: rgba(224, 193, 123, 0.5);
+  color: var(--gold-light);
+}
+
+.luxury-hero-contact-card,
+.luxury-hero-scroll,
+.hero-scroll,
+.luxury-hero-lines,
+.luxury-hero-glow {
+  display: none;
+}
+
+/* =========================================================
+   HOMEPAGE INTRO
+========================================================= */
+
+.intro-section {
+  padding: 120px 0;
+  border-top: 1px solid var(--border-light);
+  background:
+    radial-gradient(
+      circle at 85% 10%,
+      rgba(198, 161, 91, 0.07),
+      transparent 26%
+    ),
+    var(--black-soft);
+}
+
+.intro-grid {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 0.95fr)
+    minmax(0, 1.05fr);
+  gap: 90px;
+  align-items: start;
+}
+
+.intro-heading h2 {
+  max-width: 620px;
+  font-size: clamp(44px, 5vw, 68px);
+}
+
+.intro-copy {
+  padding-top: 29px;
+  border-top: 1px solid var(--border);
+}
+
+.intro-copy p {
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.intro-copy p + p {
+  margin-top: 18px;
+}
+
+.intro-signature {
+  margin-top: 34px;
+  display: grid;
+}
+
+.intro-signature span {
+  color: var(--gold-light);
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: 29px;
+  font-style: italic;
+}
+
+.intro-signature small {
+  color: var(--text-dark);
+  font-size: 8px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   HOMEPAGE SERVICE PREVIEW
+========================================================= */
+
+.services-preview {
+  padding: 120px 0;
+  background: var(--black);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.service-card {
+  position: relative;
+  min-height: 560px;
+  overflow: hidden;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-medium);
+  background-position: center;
+  background-size: cover;
+  box-shadow: var(--shadow);
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.service-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-7px);
+}
+
+.service-card-wedding,
+.service-card-vip {
+  background-image:
+    url("/images/hero-volvo.png");
+}
+
+.service-card-wedding {
+  background-position: 60% center;
+}
+
+.service-card-vip {
+  background-position: 80% center;
+}
+
+.service-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.97),
+      rgba(0, 0, 0, 0.15) 72%
+    );
+}
+
+.service-card-content {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  padding: 40px;
+}
+
+.service-number {
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  color: var(--gold-light);
+  font-size: 10px;
+}
+
+.service-card h3 {
+  color: var(--white);
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: clamp(36px, 4vw, 53px);
+  font-weight: 500;
+  line-height: 1;
+}
+
+.service-card p {
+  max-width: 490px;
+  margin-top: 17px;
+  color: #beb9b1;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.text-link {
+  margin-top: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  color: var(--gold-light);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   HOMEPAGE PACKAGES PREVIEW
+========================================================= */
+
+.packages-preview {
+  padding: 120px 0;
+  background: var(--black-soft);
+}
+
+.packages-grid {
+  max-width: 980px;
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.package-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 42px;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-medium);
+  background: var(--black-card);
+  box-shadow: var(--shadow);
+}
+
+.package-card-gold {
+  border-color: rgba(224, 193, 123, 0.48);
+  background:
+    radial-gradient(
+      circle at 90% 5%,
+      rgba(198, 161, 91, 0.14),
+      transparent 28%
+    ),
+    var(--black-card);
+}
+
+.package-badge {
+  position: absolute;
+  top: 0;
+  right: 28px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--gold);
+  color: #050505;
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  transform: translateY(-50%);
+}
+
+.package-top {
+  padding-bottom: 25px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.package-name {
+  color: var(--white);
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: 38px;
+}
+
+.package-price {
+  margin-top: 5px;
+  color: var(--gold-light);
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: 54px;
+  line-height: 1;
+}
+
+.package-description {
+  margin-top: 24px;
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.package-features {
+  margin: 28px 0 35px;
+  display: grid;
+  gap: 13px;
+}
+
+.package-features li {
+  color: #d5d1ca;
+  font-size: 13px;
+}
+
+.package-features li span {
+  margin-right: 10px;
+  color: var(--gold-light);
+}
+
+.package-card .button {
+  width: 100%;
+  margin-top: auto;
+}
+
+/* =========================================================
+   WHY SECTION
+========================================================= */
+
+.why-section {
+  padding: 120px 0;
+  background: var(--black);
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 0.82fr)
+    minmax(0, 1.18fr);
+  gap: 100px;
+}
+
+.why-heading {
+  position: sticky;
+  top: 130px;
+}
+
+.why-heading h2 {
+  font-size: clamp(43px, 5vw, 66px);
+}
+
+.why-line {
+  width: 80px;
+  height: 1px;
+  margin-top: 34px;
+  background: var(--gold);
+}
+
+.why-list {
+  border-top: 1px solid var(--border-light);
+}
+
+.why-item {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: 18px;
+  padding: 30px 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.why-number {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  color: var(--gold-light);
+  font-family: var(--font-heading), Georgia, serif;
+}
+
+.why-item h3 {
+  color: var(--white);
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: 27px;
+  font-weight: 500;
+}
+
+.why-item p {
+  margin-top: 6px;
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+/* =========================================================
+   HOMEPAGE GALLERY
+========================================================= */
+
+.gallery-preview {
+  padding: 120px 0;
+  background: var(--black-soft);
+}
+
+.gallery-heading-row {
+  margin-bottom: 48px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1.45fr 0.7fr;
+  grid-template-rows: repeat(2, 280px);
+  gap: 18px;
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-medium);
+  background: var(--black-card);
+}
+
+.gallery-item-large {
+  grid-row: 1 / 3;
+}
+
+.gallery-item img {
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.04);
+}
+
+.gallery-grid > .gallery-item:nth-child(2) img {
+  padding: 30px;
+  object-fit: contain;
+  background: #070707;
+}
+
+.gallery-item-dark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+}
+
+.gallery-quote {
+  text-align: center;
+}
+
+.gallery-quote > span {
+  color: var(--gold);
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: 60px;
+}
+
+.gallery-quote p {
+  color: var(--white);
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: 28px;
+  line-height: 1.15;
+}
+
+.gallery-quote small {
+  display: block;
+  margin-top: 17px;
+  color: var(--gold-light);
+  font-size: 8px;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   SUBPAGE COMMON INTRO
+   Bez auta
+========================================================= */
+
+.subpage,
+.services-page,
+.gallery-page,
+.contact-page,
+.packages-page {
+  min-height: 100vh;
+  background: var(--black);
+}
+
+.subpage-intro,
+.page-hero {
+  position: relative;
+  min-height: 390px;
+  display: flex;
+  align-items: center;
+  padding: 155px 0 80px;
+  background:
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(198, 161, 91, 0.11),
+      transparent 27%
+    ),
+    linear-gradient(
+      135deg,
+      #050505,
+      #0d0b08
+    );
+}
+
+.subpage-intro::after,
+.page-hero::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  background:
+    linear-gradient(
+      to right,
+      transparent,
+      rgba(198, 161, 91, 0.5),
+      transparent
+    );
+  content: "";
+}
+
+.subpage-intro-grid {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1.1fr)
+    minmax(280px, 0.9fr);
+  gap: 70px;
+  align-items: end;
+}
+
+.subpage-intro h1,
+.page-hero-content h1 {
+  color: var(--white);
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: clamp(54px, 7vw, 88px);
+  font-weight: 500;
+  line-height: 0.96;
+  letter-spacing: -0.035em;
+}
+
+.subpage-intro-grid > p,
+.page-hero-content p {
+  max-width: 510px;
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+.page-hero-image,
+.page-hero-overlay {
+  display: none;
+}
+
+.page-hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Odstránenie obrázkov z hero podstránok */
+
+.gallery-page-hero,
+.contact-page-hero,
+.packages-hero {
+  background:
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(198, 161, 91, 0.11),
+      transparent 27%
+    ),
+    linear-gradient(
+      135deg,
+      #050505,
+      #0d0b08
+    );
+}
+
+/* =========================================================
+   SERVICES PAGE
+========================================================= */
+
+.services-overview {
+  padding: 110px 0;
+  background: var(--black-soft);
+}
+
+.services-detail-grid {
+  margin-top: 55px;
+  display: grid;
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.service-detail-card {
+  padding: 42px;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-medium);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.025),
+      transparent
+    ),
+    var(--black-card);
+  box-shadow: var(--shadow);
+  transition:
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.service-detail-card:hover {
+  border-color: var(--border);
+  transform: translateY(-6px);
+}
+
+.service-detail-top {
+  display: grid;
+  gap: 22px;
+}
+
+.service-detail-number {
+  width: 45px;
+  height: 45px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  color: var(--gold-light);
+  font-size: 10px;
+}
+
+.service-detail-card h2 {
+  max-width: 430px;
+  color: var(--white);
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: clamp(35px, 4vw, 50px);
+  font-weight: 500;
+  line-height: 1.04;
+}
+
+.service-detail-card > p {
+  margin-top: 22px;
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.85;
+}
+
+.service-detail-card ul {
+  margin-top: 28px;
+  padding-top: 25px;
+  display: grid;
+  gap: 13px;
+  border-top: 1px solid var(--border-light);
+}
+
+.service-detail-card li {
+  position: relative;
+  padding-left: 25px;
+  color: #d7d3cc;
+  font-size: 13px;
+}
+
+.service-detail-card li::before {
+  position: absolute;
+  left: 0;
+  color: var(--gold-light);
+  content: "✓";
+}
+
+/* =========================================================
+   COMBINED PACKAGES
+========================================================= */
+
+.packages-combined-section {
+  padding: 110px 0;
+  background: var(--black);
+}
+
+.packages-combined-grid {
+  max-width: 980px;
+  margin: 55px auto 0;
+  display: grid;
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.package-combined-card {
+  position: relative;
+  min-height: 590px;
+  display: flex;
+  flex-direction: column;
+  padding: 43px;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-medium);
+  background: var(--black-card);
+  box-shadow: var(--shadow);
+}
+
+.package-combined-card.is-featured {
+  border-color: rgba(224, 193, 123, 0.5);
+  background:
+    radial-gradient(
+      circle at 90% 5%,
+      rgba(198, 161, 91, 0.14),
+      transparent 30%
+    ),
+    var(--black-card);
+}
+
+.package-combined-badge {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  padding: 8px 13px;
+  border-radius: 999px;
+  background: var(--gold);
+  color: #050505;
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.package-combined-name {
+  color: var(--gold-light);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.package-combined-price {
+  margin-top: 25px;
+  color: var(--white);
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: clamp(58px, 7vw, 82px);
+  font-weight: 500;
+  line-height: 1;
+}
+
+.is-featured .package-combined-price {
+  color: var(--gold-light);
+}
+
+.package-combined-description {
+  margin-top: 20px;
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.package-combined-card ul {
+  margin: 30px 0 36px;
+  display: grid;
+  gap: 14px;
+}
+
+.package-combined-card li {
+  position: relative;
+  padding-left: 25px;
+  color: #d6d2cb;
+  font-size: 13px;
+}
+
+.package-combined-card li::before {
+  position: absolute;
+  left: 0;
+  color: var(--gold-light);
+  content: "✓";
+}
+
+.package-combined-card .button {
+  width: 100%;
+  margin-top: auto;
+}
+
+/* =========================================================
+   SUBPAGE CTA
+========================================================= */
+
+.subpage-cta {
+  padding: 0 0 110px;
+  background: var(--black);
+}
+
+.subpage-cta-inner {
+  padding: 48px 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 45px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-large);
+  background:
+    radial-gradient(
+      circle at 90% 10%,
+      rgba(198, 161, 91, 0.12),
+      transparent 28%
+    ),
+    var(--black-card);
+}
+
+.subpage-cta h2 {
+  max-width: 670px;
+  font-size: clamp(34px, 4vw, 52px);
+}
+
+.subpage-cta p {
+  max-width: 650px;
+  margin-top: 17px;
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.subpage-cta .button {
+  flex-shrink: 0;
+}
+
+/* =========================================================
+   GALLERY PAGE
+========================================================= */
+
+.gallery-page-section {
+  padding: 110px 0;
+  background: var(--black-soft);
+}
+
+.gallery-page-heading {
+  margin-bottom: 48px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 55px;
+  align-items: end;
+}
+
+.gallery-page-heading h2 {
+  font-size: clamp(42px, 5vw, 66px);
+}
+
+.gallery-page-heading p {
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.gallery-page-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: 185px;
+  gap: 18px;
+}
+
+.gallery-page-item {
+  position: relative;
+  grid-column: span 4;
+  grid-row: span 2;
+  overflow: hidden;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-medium);
+  background: var(--black-card);
+}
+
+.gallery-page-item-large {
+  grid-column: span 8;
+  grid-row: span 3;
+}
+
+.gallery-page-item-wide {
+  grid-column: span 8;
+}
+
+.gallery-page-item img {
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.gallery-page-item:hover img {
+  transform: scale(1.05);
+}
+
+.gallery-page-item-logo img {
+  padding: 45px;
+  object-fit: contain;
+}
+
+.gallery-page-item::after {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.68),
+      transparent 50%
+    );
+  content: "";
+}
+
+.gallery-page-overlay {
+  position: absolute;
+  z-index: 2;
+  right: 18px;
+  bottom: 15px;
+}
+
+.gallery-page-overlay span {
+  color: rgba(255, 255, 255, 0.66);
+  font-size: 9px;
+  letter-spacing: 0.15em;
+}
+
+.gallery-page-cta {
+  margin-top: 80px;
+  padding: 45px 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-large);
+  background: var(--black-card);
+}
+
+.gallery-page-cta h2 {
+  max-width: 690px;
+  margin-top: 15px;
+  color: var(--white);
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: clamp(34px, 4vw, 51px);
+  font-weight: 500;
+  line-height: 1.07;
+}
+
+/* =========================================================
+   CONTACT PAGE
+========================================================= */
+
+.contact-page-section {
+  padding: 110px 0;
+  background: var(--black-soft);
+}
+
+.contact-page-grid {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 0.9fr)
+    minmax(0, 1.1fr);
+  gap: 60px;
+  align-items: start;
+}
+
+.contact-page-info h2 {
+  margin: 15px 0 22px;
+  font-size: clamp(42px, 5vw, 64px);
+}
+
+.contact-page-intro {
+  margin-bottom: 37px;
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+.contact-info-list {
+  display: grid;
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.contact-info-card {
+  padding: 22px;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-medium);
+  background: var(--black-card);
+}
+
+.contact-info-card span {
+  display: block;
+  margin-bottom: 13px;
+  color: var(--gold-light);
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: 0.17em;
+}
+
+.contact-info-card a,
+.contact-info-card p {
+  color: #e3dfd8;
+  font-size: 13px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.contact-quick-actions {
+  margin-top: 27px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13px;
+}
+
+.contact-form-wrap {
+  padding: 39px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-large);
+  background:
+    radial-gradient(
+      circle at 90% 5%,
+      rgba(198, 161, 91, 0.09),
+      transparent 27%
+    ),
+    var(--black-card);
+  box-shadow: var(--shadow);
+}
+
+.contact-form-heading span {
+  color: var(--gold-light);
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 0.19em;
+}
+
+.contact-form-heading h2 {
+  margin: 13px 0;
+  color: var(--white);
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: clamp(31px, 4vw, 44px);
+  font-weight: 500;
+  line-height: 1.08;
+}
+
+.contact-form-heading p {
+  margin-bottom: 29px;
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.contact-form {
+  display: grid;
+  gap: 18px;
+}
+
+.contact-form-row {
+  display: grid;
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.contact-field {
+  display: grid;
+  gap: 8px;
+}
+
+.contact-field label {
+  color: #cbc7c0;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.contact-field input,
+.contact-field select,
+.contact-field textarea {
+  width: 100%;
+  border: 1px solid var(--border-light);
+  border-radius: 11px;
+  outline: none;
+  background: #090909;
+  color: var(--white);
+  font: inherit;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.contact-field input,
+.contact-field select {
+  min-height: 50px;
+  padding: 0 15px;
+}
+
+.contact-field textarea {
+  min-height: 140px;
+  padding: 14px 15px;
+  resize: vertical;
+}
+
+.contact-field input:focus,
+.contact-field select:focus,
+.contact-field textarea:focus {
+  border-color: var(--gold);
+  box-shadow:
+    0 0 0 3px rgba(198, 161, 91, 0.08);
+}
+
+.contact-field input::placeholder,
+.contact-field textarea::placeholder {
+  color: #68645f;
+}
+
+.contact-field select option {
+  background: #0c0c0c;
+}
+
+.contact-form .button {
+  width: 100%;
+  margin-top: 3px;
+}
+
+.contact-form-note {
+  margin-top: 14px;
+  color: #706c66;
+  font-size: 10px;
+  text-align: center;
+}
+
+.contact-map-section {
+  padding: 0 0 110px;
+  background: var(--black-soft);
+}
+
+.contact-map-card {
+  min-height: 220px;
+  padding: 45px 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-large);
+  background:
+    radial-gradient(
+      circle at 90% 10%,
+      rgba(198, 161, 91, 0.12),
+      transparent 29%
+    ),
+    var(--black-card);
+}
+
+.contact-map-card h2 {
+  margin: 13px 0 8px;
+  font-size: clamp(34px, 4vw, 49px);
+}
+
+.contact-map-card p {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+  padding: 58px 0 22px;
+  border-top: 1px solid var(--border-light);
+  background: #040404;
+}
+
+.footer-main {
+  display: grid;
+  grid-template-columns:
+    minmax(280px, 1.3fr)
+    minmax(220px, 0.9fr)
+    minmax(160px, 0.6fr);
+  gap: 55px;
+  align-items: start;
+  padding-bottom: 45px;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.footer-brand img {
+  width: 72px;
+  height: 72px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.footer-brand div {
+  display: grid;
+}
+
+.footer-brand strong {
+  color: var(--gold-light);
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.footer-brand span {
+  color: var(--text-dark);
+  font-size: 8px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.footer-contact {
+  display: grid;
+  gap: 7px;
+}
+
+.footer-contact a {
+  color: #cfcbc4;
+  font-size: 12px;
+  transition: color 0.2s ease;
+}
+
+.footer-contact a:hover {
+  color: var(--gold-light);
+}
+
+.footer-contact p {
+  color: var(--text-dark);
+  font-size: 11px;
+}
+
+.footer-nav {
+  display: grid;
+  justify-items: start;
+  gap: 9px;
+}
+
+.footer-nav a {
+  color: var(--text-muted);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+.footer-nav a:hover {
+  color: var(--gold-light);
+}
+
+.footer-bottom {
+  padding-top: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  border-top: 1px solid var(--border-light);
+}
+
+.footer-bottom p {
+  color: #5f5b56;
+  font-size: 9px;
+}
+
+/* Podpora starších názvov footer tried */
+
+.footer-grid {
+  display: grid;
+  grid-template-columns:
+    1.3fr 0.9fr 0.6fr;
+  gap: 55px;
+  padding-bottom: 45px;
+}
+
+.footer-links {
+  display: grid;
+  gap: 9px;
+  justify-items: start;
+}
+
+.footer-links a {
+  color: var(--text-muted);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+  .site-logo-copy small {
+    display: none;
   }
+
+  .site-navigation {
+    gap: 19px;
+  }
+
+  .site-header-menu {
+    gap: 20px;
+  }
+
+  .intro-grid,
+  .why-grid {
+    gap: 55px;
+  }
+
+  .contact-page-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-page-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 240px;
+  }
+
+  .gallery-page-item,
+  .gallery-page-item-large,
+  .gallery-page-item-wide {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  .gallery-page-item-large {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .footer-main,
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer-nav,
+  .footer-links {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+}
+
+/* =========================================================
+   MOBILE NAVIGATION
+========================================================= */
+
+@media (max-width: 850px) {
+  .site-header-inner {
+    min-height: 76px;
+  }
+
+  .site-logo-image {
+    width: 47px;
+    height: 47px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .site-header-menu {
+    position: fixed;
+    inset: 76px 0 0;
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+    gap: 28px;
+    padding: 45px 24px;
+    background:
+      radial-gradient(
+        circle at 80% 10%,
+        rgba(198, 161, 91, 0.12),
+        transparent 35%
+      ),
+      rgba(5, 5, 5, 0.99);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-15px);
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  .site-header-menu.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .site-navigation {
+    display: grid;
+    gap: 0;
+  }
+
+  .site-navigation a {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border-light);
+    font-family: var(--font-heading), Georgia, serif;
+    font-size: 29px;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .site-navigation a::after {
+    display: none;
+  }
+
+  .site-header-phone {
+    width: 100%;
+    min-height: 58px;
+    place-content: center;
+    text-align: center;
+  }
+
+  .luxury-hero-container,
+  .hero-content {
+    width: min(100% - 36px, var(--container));
+    padding-top: 140px;
+    padding-bottom: 80px;
+  }
+
+  .luxury-hero,
+  .hero-section {
+    min-height: 100svh;
+  }
+
+  .luxury-hero-background {
+    background-position: 63% center;
+  }
+
+  .luxury-hero-overlay,
+  .hero-shade {
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.3),
+        rgba(0, 0, 0, 0.68) 48%,
+        rgba(0, 0, 0, 0.97)
+      );
+  }
+
+  .intro-section,
+  .services-preview,
+  .packages-preview,
+  .why-section,
+  .gallery-preview,
+  .services-overview,
+  .packages-combined-section,
+  .gallery-page-section,
+  .contact-page-section {
+    padding: 85px 0;
+  }
+
+  .intro-grid,
+  .why-grid,
+  .subpage-intro-grid,
+  .gallery-page-heading {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .services-grid,
+  .packages-grid,
+  .services-detail-grid,
+  .packages-combined-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .why-heading {
+    position: static;
+  }
+
+  .gallery-heading-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 420px 270px 270px;
+  }
+
+  .gallery-item-large {
+    grid-row: auto;
+  }
+
+  .subpage-intro,
+  .page-hero {
+    min-height: 330px;
+    padding: 130px 0 65px;
+  }
+
+  .subpage-cta-inner,
+  .gallery-page-cta,
+  .contact-map-card {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .subpage-cta .button,
+  .gallery-page-cta .button,
+  .contact-map-card .button {
+    width: 100%;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+  .page-container {
+    width: min(
+      var(--container),
+      calc(100% - 24px)
+    );
+  }
+
+  .site-logo-copy strong {
+    font-size: 18px;
+  }
+
+  .luxury-hero-container,
+  .hero-content {
+    width: calc(100% - 24px);
+  }
+
+  .luxury-hero-title,
+  .hero-title {
+    font-size: 43px;
+    line-height: 0.98;
+  }
+
+  .luxury-hero-description,
+  .hero-text {
+    font-size: 14px;
+  }
+
+  .luxury-hero-actions,
+  .hero-actions,
+  .contact-quick-actions {
+    flex-direction: column;
+  }
+
+  .luxury-button,
+  .hero-actions .button,
+  .contact-quick-actions .button {
+    width: 100%;
+  }
+
+  .section-heading h2,
+  .intro-heading h2,
+  .why-heading h2 {
+    font-size: 39px;
+  }
+
+  .service-card {
+    min-height: 440px;
+  }
+
+  .service-card-content,
+  .service-detail-card,
+  .package-combined-card,
+  .package-card {
+    padding: 28px 24px;
+  }
+
+  .service-card h3 {
+    font-size: 39px;
+  }
+
+  .package-combined-price {
+    font-size: 58px;
+  }
+
+  .gallery-grid {
+    grid-template-rows: 330px 240px 240px;
+  }
+
+  .gallery-page-grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 270px;
+  }
+
+  .gallery-page-item,
+  .gallery-page-item-large,
+  .gallery-page-item-wide {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  .gallery-page-item-logo img {
+    padding: 30px;
+  }
+
+  .contact-info-list,
+  .contact-form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form-wrap {
+    padding: 29px 21px;
+  }
+
+  .subpage-cta-inner,
+  .gallery-page-cta,
+  .contact-map-card {
+    padding: 34px 24px;
+    border-radius: var(--radius-medium);
+  }
+
+  .footer-main,
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .footer-nav,
+  .footer-links {
+    grid-column: auto;
+  }
+
+  .footer-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 7px;
+  }
+}
+/* =========================================================
+   HERO – TRUST INFORMÁCIE
+========================================================= */
+
+.luxury-hero-trust {
+  margin-top: 42px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 22px;
+}
+
+.luxury-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.luxury-trust-icon {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(198, 161, 91, 0.35);
+  border-radius: 50%;
+  background: rgba(198, 161, 91, 0.06);
+  color: #e3c47d;
+}
+
+.luxury-trust-icon svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+.luxury-trust-item > div:last-child {
+  display: grid;
+  gap: 2px;
+}
+
+.luxury-trust-item strong {
+  color: #ffffff;
+  font-family: Georgia, serif;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.luxury-trust-item span {
+  color: #aaa59d;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.luxury-trust-divider {
+  width: 1px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.luxury-hero-bottom {
+  position: absolute;
+  z-index: 3;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 22px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.85),
+    rgba(0, 0, 0, 0.15)
+  );
+}
+
+.luxury-hero-bottom-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.luxury-scroll-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #aaa59d;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.luxury-scroll-mouse {
+  position: relative;
+  width: 18px;
+  height: 28px;
+  display: block;
+  border: 1px solid rgba(227, 196, 125, 0.55);
+  border-radius: 12px;
+}
+
+.luxury-scroll-mouse i {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  width: 2px;
+  height: 5px;
+  border-radius: 2px;
+  background: #e3c47d;
+  transform: translateX(-50%);
+}
+
+.luxury-hero-social-proof {
+  text-align: right;
+}
+
+.luxury-stars {
+  display: flex;
+  justify-content: flex-end;
+  gap: 3px;
+  color: #e3c47d;
+  font-size: 11px;
+}
+
+.luxury-hero-social-proof p {
+  margin-top: 4px;
+  color: #8d8881;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+
+@media (max-width: 850px) {
+  .luxury-hero-trust {
+    gap: 16px;
+  }
+
+  .luxury-trust-divider {
+    display: none;
+  }
+
+  .luxury-hero-bottom {
+    position: relative;
+    padding: 18px 0;
+  }
+
+  .luxury-hero-bottom-inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .luxury-hero-social-proof {
+    text-align: left;
+  }
+
+  .luxury-stars {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 560px) {
+  .luxury-hero-trust {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .luxury-trust-icon {
+    width: 38px;
+    height: 38px;
+    flex-basis: 38px;
+  }
+
+  .luxury-trust-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+
+/* =========================================================
+   PRESTIGE DRIVE — COMPACT FORTIS-INSPIRED OVERRIDES
+   Kompaktnejšie sekcie, menšie hero bloky, viac obsahu
+   nad prehybom a jednotné proporcie na celom webe.
+========================================================= */
+
+:root {
+  --radius-small: 7px;
+  --radius-medium: 11px;
+  --radius-large: 15px;
+  --shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
+}
+
+.page-container,
+.pd-services-container {
+  width: min(1160px, calc(100% - 48px));
+}
+
+/* HEADER */
+
+.site-header-inner {
+  min-height: 74px;
+}
+
+.site-logo-image {
+  width: 46px;
+  height: 46px;
+  border-radius: 8px;
+}
+
+.site-logo-copy strong {
+  font-size: 19px;
+}
+
+.site-navigation a {
+  padding-block: 27px;
+}
+
+.site-navigation a::after {
+  bottom: 19px;
+}
+
+.site-header-phone {
+  min-width: 142px;
+  padding: 8px 14px;
+}
+
+/* SPOLOČNÉ TYPOGRAFICKÉ PROPORCIE */
+
+.section-heading h2 {
+  font-size: clamp(38px, 4.5vw, 59px);
+}
+
+.section-subtitle {
+  margin-top: 15px;
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+/* DOMOVSKÁ STRÁNKA */
+
+.luxury-hero,
+.hero-section {
+  min-height: 760px;
+}
+
+.luxury-hero-container,
+.hero-content {
+  padding-top: 135px;
+  padding-bottom: 90px;
+}
+
+.luxury-hero-title,
+.hero-title {
+  max-width: 760px;
+  font-size: clamp(53px, 6.5vw, 86px);
+}
+
+.luxury-hero-description,
+.hero-text {
+  max-width: 570px;
+  margin-top: 22px;
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.luxury-hero-actions,
+.hero-actions {
+  margin-top: 28px;
+}
+
+.intro-section,
+.services-preview,
+.packages-preview,
+.why-section,
+.gallery-preview {
+  padding: 84px 0;
+}
+
+.intro-grid {
+  gap: 62px;
+}
+
+.services-grid {
+  gap: 16px;
+}
+
+.service-card {
+  min-height: 470px;
+  border-radius: 12px;
+}
+
+.service-card-content {
+  padding: 32px;
+}
+
+.packages-grid {
+  gap: 18px;
+}
+
+.package-card {
+  padding: 34px;
+  border-radius: 12px;
+}
+
+.why-grid {
+  gap: 68px;
+}
+
+.why-heading {
+  top: 105px;
+}
+
+.why-item {
+  padding: 23px 0;
+}
+
+.gallery-heading-row {
+  margin-bottom: 34px;
+}
+
+.gallery-grid {
+  grid-template-rows: repeat(2, 235px);
+  gap: 14px;
+}
+
+.gallery-item {
+  border-radius: 12px;
+}
+
+/* VŠETKY PODSTRÁNKY — KRATŠÍ HERO */
+
+.subpage-intro,
+.page-hero {
+  min-height: 250px;
+  padding: 122px 0 52px;
+}
+
+.subpage-intro-grid {
+  grid-template-columns: minmax(0, 1.18fr) minmax(280px, 0.82fr);
+  gap: 48px;
+}
+
+.subpage-intro h1,
+.page-hero-content h1 {
+  font-size: clamp(47px, 5.8vw, 71px);
+  line-height: 0.98;
+}
+
+.subpage-intro-grid > p,
+.page-hero-content p {
+  max-width: 500px;
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+/* STARŠIA STRÁNKA SLUŽIEB */
+
+.services-overview,
+.packages-combined-section,
+.gallery-page-section,
+.contact-page-section {
+  padding: 76px 0;
+}
+
+.services-detail-grid,
+.packages-combined-grid {
+  margin-top: 38px;
+  gap: 16px;
+}
+
+.service-detail-card {
+  padding: 32px;
+  border-radius: 12px;
+}
+
+.package-combined-card {
+  min-height: 510px;
+  padding: 34px;
+  border-radius: 12px;
+}
+
+.subpage-cta {
+  padding: 0 0 76px;
+}
+
+.subpage-cta-inner {
+  padding: 36px 40px;
+  gap: 35px;
+  border-radius: 14px;
+}
+
+/* NOVÁ PD STRÁNKA SLUŽIEB */
+
+.pd-services-hero {
+  min-height: 650px;
+}
+
+.pd-services-hero-content {
+  padding: 145px 0 90px;
+}
+
+.pd-services-hero h1 {
+  max-width: 780px;
+  font-size: clamp(50px, 6.4vw, 84px);
+}
+
+.pd-services-hero-text {
+  margin-top: 22px;
+  font-size: 14px;
+}
+
+.pd-services-benefit {
+  min-height: 106px;
+  padding: 22px 26px;
+}
+
+.pd-services-offer,
+.pd-services-why,
+.pd-services-process {
+  padding: 76px 0;
+}
+
+.pd-services-heading-row {
+  margin-bottom: 38px;
+}
+
+.pd-services-grid {
+  gap: 14px;
+}
+
+.pd-service-card {
+  min-height: 405px;
+  padding: 28px;
+  border-radius: 11px;
+}
+
+.pd-service-card h3 {
+  margin-top: 32px;
+  font-size: 31px;
+}
+
+.pd-services-process-grid {
+  margin-top: 36px;
+}
+
+.pd-services-process-grid article {
+  min-height: 190px;
+  padding: 27px;
+}
+
+.pd-services-process-grid h3 {
+  margin-top: 39px;
+}
+
+.pd-services-cta {
+  padding: 68px 0;
+}
+
+/* GALÉRIA */
+
+.gallery-page-heading {
+  margin-bottom: 34px;
+  gap: 42px;
+}
+
+.gallery-page-grid {
+  grid-auto-rows: 155px;
+  gap: 14px;
+}
+
+.gallery-page-item {
+  border-radius: 11px;
+}
+
+.gallery-page-cta {
+  margin-top: 50px;
+  padding: 34px 40px;
+  border-radius: 14px;
+}
+
+/* KONTAKT — HLAVNÁ OPRAVA */
+
+.contact-page-hero,
+.contact-page .page-hero,
+.contact-page .subpage-intro {
+  min-height: 235px;
+  padding-top: 116px;
+  padding-bottom: 43px;
+}
+
+.contact-page-section {
+  padding: 64px 0 68px;
+}
+
+.contact-page-grid {
+  grid-template-columns: minmax(0, 0.86fr) minmax(430px, 1.14fr);
+  gap: 42px;
+  align-items: center;
+}
+
+.contact-page-info h2 {
+  max-width: 530px;
+  margin: 11px 0 15px;
+  font-size: clamp(39px, 4.5vw, 57px);
+  line-height: 1.03;
+}
+
+.contact-page-intro {
+  max-width: 520px;
+  margin-bottom: 25px;
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+.contact-info-list {
+  gap: 10px;
+}
+
+.contact-info-card {
+  min-height: 92px;
+  padding: 17px 18px;
+  border-radius: 10px;
+}
+
+.contact-info-card span {
+  margin-bottom: 8px;
+}
+
+.contact-info-card a,
+.contact-info-card p {
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.contact-quick-actions {
+  margin-top: 18px;
+  gap: 10px;
+}
+
+.contact-form-wrap {
+  padding: 29px;
+  border-radius: 13px;
+}
+
+.contact-form-heading h2 {
+  margin: 9px 0;
+  font-size: clamp(28px, 3.5vw, 38px);
+}
+
+.contact-form-heading p {
+  margin-bottom: 21px;
+  font-size: 13px;
+}
+
+.contact-form {
+  gap: 14px;
+}
+
+.contact-field input,
+.contact-field select {
+  min-height: 46px;
+}
+
+.contact-field textarea {
+  min-height: 110px;
+}
+
+.contact-map-section {
+  padding: 0 0 68px;
+}
+
+.contact-map-card {
+  min-height: 170px;
+  padding: 30px 36px;
+  gap: 30px;
+  border-radius: 13px;
+}
+
+.contact-map-card h2 {
+  margin: 8px 0 5px;
+  font-size: clamp(30px, 3.5vw, 42px);
+}
+
+/* Ak je Google mapa priamo v contact-page-grid */
+
+.contact-page-grid iframe,
+.contact-map-section iframe,
+.contact-map-card iframe {
+  width: 100%;
+  height: 350px;
+  max-height: 350px;
+  display: block;
+  border: 0;
+  border-radius: 13px;
+}
+
+.contact-page-grid > iframe,
+.contact-page-grid > div:has(iframe) {
+  min-height: 0;
+  overflow: hidden;
+  border-radius: 13px;
+}
+
+/* BALÍKY */
+
+.packages-preview,
+.packages-combined-section {
+  padding-top: 76px;
+  padding-bottom: 76px;
+}
+
+.package-price {
+  font-size: 48px;
+}
+
+/* TLAČIDLÁ */
+
+.button,
+.luxury-button,
+.pd-button {
+  min-height: 50px;
+  padding: 12px 22px;
+  border-radius: 7px;
+}
+
+/* FOOTER */
+
+.footer {
+  padding: 43px 0 18px;
+}
+
+.footer-main {
+  padding-bottom: 34px;
+}
+
+/* TABLET */
+
+@media (max-width: 1000px) {
+  .contact-page-grid {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .contact-page-grid iframe,
+  .contact-map-section iframe,
+  .contact-map-card iframe {
+    height: 330px;
+  }
+
+  .pd-services-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 850px) {
+  .subpage-intro,
+  .page-hero,
+  .contact-page-hero,
+  .contact-page .page-hero,
+  .contact-page .subpage-intro {
+    min-height: auto;
+    padding: 112px 0 45px;
+  }
+
+  .subpage-intro-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .services-overview,
+  .packages-combined-section,
+  .gallery-page-section,
+  .contact-page-section,
+  .pd-services-offer,
+  .pd-services-why,
+  .pd-services-process {
+    padding: 62px 0;
+  }
+
+  .gallery-page-grid {
+    grid-auto-rows: 145px;
+  }
+
+  .contact-page-grid {
+    gap: 32px;
+  }
+
+  .contact-page-info h2 {
+    max-width: 620px;
+  }
+
+  .contact-map-section {
+    padding-bottom: 58px;
+  }
+
+  .contact-map-card {
+    min-height: auto;
+    padding: 28px;
+  }
+}
+
+/* MOBIL */
+
+@media (max-width: 600px) {
+  .page-container,
+  .pd-services-container {
+    width: min(100% - 28px, 1160px);
+  }
+
+  .site-header-inner {
+    min-height: 67px;
+  }
+
+  .luxury-hero,
+  .hero-section {
+    min-height: 650px;
+  }
+
+  .luxury-hero-container,
+  .hero-content {
+    padding-top: 120px;
+    padding-bottom: 70px;
+  }
+
+  .intro-section,
+  .services-preview,
+  .packages-preview,
+  .why-section,
+  .gallery-preview {
+    padding: 62px 0;
+  }
+
+  .subpage-intro,
+  .page-hero,
+  .contact-page-hero,
+  .contact-page .page-hero,
+  .contact-page .subpage-intro {
+    padding: 102px 0 38px;
+  }
+
+  .subpage-intro h1,
+  .page-hero-content h1 {
+    font-size: clamp(43px, 14vw, 59px);
+  }
+
+  .contact-page-section {
+    padding: 53px 0;
+  }
+
+  .contact-page-info h2 {
+    font-size: clamp(37px, 12vw, 50px);
+  }
+
+  .contact-info-list,
+  .contact-form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-info-card {
+    min-height: auto;
+  }
+
+  .contact-form-wrap {
+    padding: 22px;
+  }
+
+  .contact-page-grid iframe,
+  .contact-map-section iframe,
+  .contact-map-card iframe {
+    height: 285px;
+    max-height: 285px;
+  }
+
+  .contact-map-section {
+    padding-bottom: 52px;
+  }
+
+  .contact-map-card {
+    padding: 23px;
+  }
+
+  .gallery-page-grid {
+    grid-auto-rows: 220px;
+  }
+
+  .pd-services-hero {
+    min-height: 610px;
+  }
+
+  .pd-services-hero-content {
+    padding: 125px 0 72px;
+  }
+
+  .pd-services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pd-service-card {
+    min-height: 390px;
+  }
+
+  .pd-services-cta {
+    padding: 58px 0;
+  }
+
+  .footer {
+    padding-top: 36px;
+  }
+}
+/* =========================================================
+   PRESTIGE DRIVE — SLUŽBY
+   Presne pre page.js s triedami pd-services-*
+   Vlož na KONIEC app/globals.css
+========================================================= */
+
+.pd-services-page {
+  min-height: 100vh;
+  overflow: hidden;
+  background: #050505;
+  color: #f4f1eb;
+}
+
+.pd-services-page *,
+.pd-services-page *::before,
+.pd-services-page *::after {
+  box-sizing: border-box;
+}
+
+.pd-services-container {
+  width: min(1160px, calc(100% - 48px));
+  margin-inline: auto;
+}
+
+.pd-services-label {
+  margin: 0;
+  color: #d7b665;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+/* HERO */
+
+.pd-services-hero {
+  position: relative;
+  min-height: 620px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(213, 177, 93, 0.18);
+  background: #030303;
+}
+
+.pd-services-hero-image {
+  position: absolute;
+  inset: 0;
+  background-image: url("/images/hero-volvo.png");
+  background-position: center 58%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.pd-services-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.98) 0%,
+      rgba(0, 0, 0, 0.88) 40%,
+      rgba(0, 0, 0, 0.5) 72%,
+      rgba(0, 0, 0, 0.25) 100%
+    ),
+    linear-gradient(
+      to top,
+      #050505 0%,
+      rgba(5, 5, 5, 0.08) 45%,
+      rgba(0, 0, 0, 0.35) 100%
+    );
+}
+
+.pd-services-hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 140px 0 82px;
+}
+
+.pd-services-hero h1 {
+  max-width: 790px;
+  margin: 20px 0 0;
+  color: #f4f1eb;
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: clamp(52px, 6.6vw, 86px);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+}
+
+.pd-services-hero h1 span {
+  display: block;
+  margin-top: 7px;
+  color: #d7b665;
+}
+
+.pd-services-hero-text {
+  max-width: 590px;
+  margin: 24px 0 0;
+  color: rgba(255, 255, 255, 0.67);
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.pd-services-hero-actions {
+  margin-top: 29px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 11px;
+}
+
+/* BUTTONS */
+
+.pd-button {
+  min-height: 50px;
+  padding: 13px 23px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  font-size: 9px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.pd-button:hover {
+  transform: translateY(-2px);
+}
+
+.pd-button-gold {
+  border-color: rgba(255, 239, 197, 0.34);
+  background: linear-gradient(135deg, #e5c77c, #ba8d42);
+  color: #080706;
+  box-shadow: 0 14px 34px rgba(197, 155, 72, 0.2);
+}
+
+.pd-button-gold:hover {
+  background: linear-gradient(135deg, #eed58f, #c99c4e);
+  box-shadow: 0 17px 40px rgba(197, 155, 72, 0.3);
+}
+
+.pd-button-outline {
+  border-color: rgba(218, 181, 96, 0.44);
+  background: rgba(255, 255, 255, 0.02);
+  color: #dfbf71;
+}
+
+.pd-button-outline:hover {
+  border-color: #dfbf71;
+  background: rgba(212, 172, 86, 0.09);
+}
+
+/* BENEFITY */
+
+.pd-services-benefits {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: #080808;
+}
+
+.pd-services-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.pd-services-benefit {
+  min-height: 104px;
+  padding: 22px 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.pd-services-benefit + .pd-services-benefit {
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.pd-services-benefit strong {
+  color: #dfbf71;
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: 31px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.pd-services-benefit span {
+  margin-top: 9px;
+  color: rgba(255, 255, 255, 0.43);
+  font-size: 8px;
+  font-weight: 800;
+  line-height: 1.45;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+/* SPOLOČNÉ NADPISY */
+
+.pd-services-heading-row h2,
+.pd-services-why-heading h2,
+.pd-services-process-heading h2,
+.pd-services-cta h2 {
+  margin: 16px 0 0;
+  color: #f2efe9;
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: clamp(42px, 4.8vw, 64px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.pd-services-heading-row h2 span,
+.pd-services-why-heading h2 span,
+.pd-services-process-heading h2 span,
+.pd-services-cta h2 span {
+  display: block;
+  color: #d7b665;
+}
+
+/* PONUKA */
+
+.pd-services-offer {
+  padding: 78px 0;
+  background:
+    radial-gradient(
+      circle at 10% 18%,
+      rgba(202, 161, 77, 0.06),
+      transparent 31%
+    ),
+    #050505;
+}
+
+.pd-services-heading-row {
+  margin-bottom: 38px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+  align-items: end;
+  gap: 60px;
+}
+
+.pd-services-heading-row > p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.51);
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+.pd-services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.pd-service-card {
+  position: relative;
+  min-height: 400px;
+  padding: 27px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 10px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.043),
+      rgba(255, 255, 255, 0.008)
+    ),
+    #090909;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease;
+}
+
+.pd-service-card::after {
+  position: absolute;
+  right: -85px;
+  bottom: -100px;
+  width: 210px;
+  height: 210px;
+  border-radius: 50%;
+  background: rgba(205, 166, 83, 0.08);
+  filter: blur(48px);
+  content: "";
+}
+
+.pd-service-card:hover {
+  border-color: rgba(218, 181, 98, 0.4);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(203, 160, 75, 0.08),
+      rgba(255, 255, 255, 0.01)
+    ),
+    #0a0a0a;
+  transform: translateY(-5px);
+}
+
+.pd-service-card-top {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.pd-service-number {
+  color: #d7b665;
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: 16px;
+}
+
+.pd-service-subtitle {
+  color: rgba(255, 255, 255, 0.32);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.pd-service-card h3 {
+  position: relative;
+  z-index: 2;
+  margin: 31px 0 0;
+  color: #f0ede7;
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+}
+
+.pd-service-card > p {
+  position: relative;
+  z-index: 2;
+  margin: 15px 0 0;
+  color: rgba(255, 255, 255, 0.52);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.pd-service-card ul {
+  position: relative;
+  z-index: 2;
+  margin: 20px 0 26px;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+  list-style: none;
+}
+
+.pd-service-card li {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: rgba(255, 255, 255, 0.63);
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.pd-service-card li span {
+  width: 4px;
+  height: 4px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: #d7b665;
+}
+
+.pd-service-link {
+  position: relative;
+  z-index: 2;
+  margin-top: auto;
+  padding-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+  color: #dfbf71;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.pd-service-link span {
+  font-size: 16px;
+  transition: transform 0.25s ease;
+}
+
+.pd-service-link:hover span {
+  transform: translate(4px, -4px);
+}
+
+/* PREČO MY */
+
+.pd-services-why {
+  padding: 78px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  background: #080808;
+}
+
+.pd-services-why-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  gap: 76px;
+}
+
+.pd-services-why-heading {
+  align-self: start;
+}
+
+.pd-services-why-list {
+  border-top: 1px solid rgba(255, 255, 255, 0.11);
+}
+
+.pd-services-why-list article {
+  padding: 24px 0;
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.11);
+}
+
+.pd-services-why-list article > span {
+  color: #cba655;
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: 13px;
+}
+
+.pd-services-why-list h3 {
+  margin: 0;
+  color: #efebe5;
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.pd-services-why-list p {
+  max-width: 570px;
+  margin: 7px 0 0;
+  color: rgba(255, 255, 255, 0.49);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+/* PROCES */
+
+.pd-services-process {
+  padding: 78px 0;
+  background:
+    radial-gradient(
+      circle at 50% 100%,
+      rgba(204, 162, 79, 0.05),
+      transparent 35%
+    ),
+    #050505;
+}
+
+.pd-services-process-heading {
+  max-width: 750px;
+}
+
+.pd-services-process-grid {
+  margin-top: 37px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid rgba(255, 255, 255, 0.11);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.11);
+}
+
+.pd-services-process-grid article {
+  min-height: 185px;
+  padding: 26px;
+}
+
+.pd-services-process-grid article + article {
+  border-left: 1px solid rgba(255, 255, 255, 0.11);
+}
+
+.pd-services-process-grid article > span {
+  color: #cba655;
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: 13px;
+}
+
+.pd-services-process-grid h3 {
+  margin: 37px 0 0;
+  color: #efebe5;
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.pd-services-process-grid p {
+  margin: 10px 0 0;
+  color: rgba(255, 255, 255, 0.49);
+  font-size: 12px;
+  line-height: 1.68;
+}
+
+/* CTA */
+
+.pd-services-cta {
+  padding: 66px 0;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  background:
+    radial-gradient(
+      circle at 87% 50%,
+      rgba(211, 171, 86, 0.1),
+      transparent 29%
+    ),
+    #090909;
+}
+
+.pd-services-cta-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 285px;
+  align-items: center;
+  gap: 65px;
+}
+
+.pd-services-cta h2 {
+  font-size: clamp(40px, 4.6vw, 60px);
+}
+
+.pd-services-cta h2 + p {
+  max-width: 590px;
+  margin: 18px 0 0;
+  color: rgba(255, 255, 255, 0.52);
+  font-size: 13px;
+  line-height: 1.72;
+}
+
+.pd-services-cta-actions {
+  display: grid;
+  gap: 10px;
+}
+
+.pd-services-cta-actions .pd-button {
+  width: 100%;
+}
+
+/* TABLET */
+
+@media (max-width: 1024px) {
+  .pd-services-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pd-services-heading-row,
+  .pd-services-why-grid,
+  .pd-services-cta-inner {
+    gap: 45px;
+  }
+}
+
+@media (max-width: 820px) {
+  .pd-services-hero {
+    min-height: 570px;
+  }
+
+  .pd-services-hero-content {
+    padding: 125px 0 70px;
+  }
+
+  .pd-services-benefits-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pd-services-benefit:nth-child(3) {
+    border-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .pd-services-benefit:nth-child(4) {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .pd-services-heading-row,
+  .pd-services-why-grid,
+  .pd-services-cta-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .pd-services-heading-row {
+    align-items: start;
+    gap: 22px;
+  }
+
+  .pd-services-why-grid {
+    gap: 35px;
+  }
+
+  .pd-services-process-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pd-services-process-grid article {
+    min-height: auto;
+  }
+
+  .pd-services-process-grid article + article {
+    border-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.11);
+  }
+
+  .pd-services-process-grid h3 {
+    margin-top: 28px;
+  }
+
+  .pd-services-cta-actions {
+    max-width: 350px;
+  }
+}
+
+/* MOBIL */
+
+@media (max-width: 640px) {
+  .pd-services-container {
+    width: min(100% - 28px, 1160px);
+  }
+
+  .pd-services-hero {
+    min-height: 560px;
+  }
+
+  .pd-services-hero-image {
+    background-position: 63% center;
+  }
+
+  .pd-services-hero-overlay {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.96),
+        rgba(0, 0, 0, 0.72)
+      ),
+      linear-gradient(to top, #050505, transparent 55%);
+  }
+
+  .pd-services-hero-content {
+    padding: 116px 0 65px;
+  }
+
+  .pd-services-hero h1 {
+    font-size: clamp(44px, 13vw, 61px);
+  }
+
+  .pd-services-hero-actions {
+    display: grid;
+  }
+
+  .pd-services-hero-actions .pd-button {
+    width: 100%;
+  }
+
+  .pd-services-benefit {
+    min-height: 95px;
+    padding: 19px 16px;
+  }
+
+  .pd-services-benefit strong {
+    font-size: 27px;
+  }
+
+  .pd-services-offer,
+  .pd-services-why,
+  .pd-services-process {
+    padding: 62px 0;
+  }
+
+  .pd-services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pd-service-card {
+    min-height: 385px;
+    padding: 24px;
+  }
+
+  .pd-service-card h3 {
+    font-size: 28px;
+  }
+
+  .pd-services-cta {
+    padding: 56px 0;
+  }
+
+  .pd-services-cta-inner {
+    gap: 30px;
+  }
+
+  .pd-services-cta-actions {
+    max-width: none;
+  }
+}
+/* =========================================================
+   PRESTIGE DRIVE — KONTAKT
+   Vlož na koniec app/globals.css
+========================================================= */
+
+.contact-page {
+  min-height: 100vh;
+  overflow: hidden;
+  background: #050505;
+  color: #f3f0e9;
+}
+
+.contact-page *,
+.contact-page *::before,
+.contact-page *::after {
+  box-sizing: border-box;
+}
+
+.contact-page-hero {
+  min-height: 245px;
+  display: flex;
+  align-items: center;
+  padding: 118px 0 44px;
+  border-bottom: 1px solid rgba(213, 177, 93, 0.16);
+  background:
+    radial-gradient(
+      circle at 84% 22%,
+      rgba(203, 162, 79, 0.1),
+      transparent 28%
+    ),
+    linear-gradient(135deg, #050505, #0a0907);
+}
+
+.contact-page-hero .page-hero-content {
+  max-width: 760px;
+}
+
+.contact-page-hero h1 {
+  margin: 15px 0 0;
+  color: #f4f1eb;
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: clamp(48px, 5.6vw, 72px);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+}
+
+.contact-page-hero .page-hero-content > p:last-child {
+  max-width: 570px;
+  margin: 14px 0 0;
+  color: rgba(255, 255, 255, 0.56);
+  font-size: 14px;
+  line-height: 1.72;
+}
+
+.contact-page-section {
+  padding: 68px 0;
+  background:
+    radial-gradient(
+      circle at 78% 45%,
+      rgba(201, 160, 75, 0.05),
+      transparent 31%
+    ),
+    #050505;
+}
+
+.contact-page-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.86fr) minmax(430px, 1.14fr);
+  align-items: center;
+  gap: 42px;
+}
+
+.contact-page-info h2 {
+  max-width: 540px;
+  margin: 14px 0 0;
+  color: #f1eee8;
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: clamp(42px, 4.7vw, 61px);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+}
+
+.contact-page-intro {
+  max-width: 530px;
+  margin: 18px 0 0;
+  color: rgba(255, 255, 255, 0.52);
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+.contact-info-list {
+  margin-top: 27px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 11px;
+}
+
+.contact-info-card {
+  min-height: 100px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.035),
+      rgba(255, 255, 255, 0.008)
+    ),
+    #090909;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease;
+}
+
+.contact-info-card:hover {
+  border-color: rgba(215, 182, 101, 0.36);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(205, 163, 79, 0.07),
+      rgba(255, 255, 255, 0.008)
+    ),
+    #0a0a0a;
+  transform: translateY(-3px);
+}
+
+.contact-info-card > span {
+  margin-bottom: 9px;
+  color: #d7b665;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+.contact-info-card a,
+.contact-info-card p {
+  margin: 0;
+  overflow-wrap: anywhere;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 12px;
+  line-height: 1.55;
+  text-decoration: none;
+}
+
+.contact-info-card a {
+  transition: color 0.25s ease;
+}
+
+.contact-info-card a:hover {
+  color: #e3c47d;
+}
+
+.contact-quick-actions {
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* MAPA */
+
+.contact-map-card {
+  position: relative;
+  min-height: 470px;
+  overflow: hidden;
+  border: 1px solid rgba(211, 176, 94, 0.28);
+  border-radius: 15px;
+  background: #0a0a0a;
+  box-shadow: 0 24px 65px rgba(0, 0, 0, 0.36);
+}
+
+.contact-map-card iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 470px;
+  border: 0;
+  filter: saturate(0.78) contrast(1.02);
+}
+
+.contact-map-shade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.58) 0%,
+      rgba(0, 0, 0, 0.1) 42%,
+      transparent 67%
+    );
+}
+
+.contact-map-info {
+  position: absolute;
+  z-index: 2;
+  left: 21px;
+  bottom: 21px;
+  width: min(335px, calc(100% - 42px));
+  padding: 20px;
+  border: 1px solid rgba(221, 184, 100, 0.3);
+  border-radius: 12px;
+  background: rgba(8, 8, 8, 0.88);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.38);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.contact-map-label {
+  margin: 0;
+  color: #d7b665;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.19em;
+  text-transform: uppercase;
+}
+
+.contact-map-info h3 {
+  margin: 11px 0 0;
+  color: #f2efe9;
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: 27px;
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.contact-map-address {
+  margin: 6px 0 0;
+  color: rgba(255, 255, 255, 0.52);
+  font-size: 12px;
+}
+
+.contact-map-buttons {
+  margin-top: 17px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.contact-map-buttons .button {
+  min-height: 44px;
+  padding: 11px 16px;
+  font-size: 8px;
+}
+
+/* SPODNÝ KOMPAKTNÝ PRUH */
+
+.contact-bottom-strip {
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  background: #080808;
+}
+
+.contact-bottom-strip-inner {
+  min-height: 118px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.contact-bottom-strip h2 {
+  margin: 9px 0 0;
+  color: #f0ede7;
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 400;
+}
+
+.contact-bottom-strip .text-link {
+  margin-top: 0;
+  flex-shrink: 0;
+}
+
+/* TABLET */
+
+@media (max-width: 980px) {
+  .contact-page-grid {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .contact-page-info {
+    max-width: 720px;
+  }
+
+  .contact-map-card,
+  .contact-map-card iframe {
+    min-height: 430px;
+  }
+}
+
+/* MOBIL */
+
+@media (max-width: 640px) {
+  .contact-page-hero {
+    min-height: auto;
+    padding: 104px 0 38px;
+  }
+
+  .contact-page-section {
+    padding: 54px 0;
+  }
+
+  .contact-page-info h2 {
+    font-size: clamp(39px, 12vw, 52px);
+  }
+
+  .contact-info-list {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-info-card {
+    min-height: auto;
+  }
+
+  .contact-quick-actions {
+    display: grid;
+  }
+
+  .contact-quick-actions .button {
+    width: 100%;
+  }
+
+  .contact-map-card,
+  .contact-map-card iframe {
+    min-height: 390px;
+  }
+
+  .contact-map-info {
+    right: 14px;
+    bottom: 14px;
+    left: 14px;
+    width: auto;
+    padding: 17px;
+  }
+
+  .contact-map-info h3 {
+    font-size: 24px;
+  }
+
+  .contact-map-buttons {
+    display: grid;
+  }
+
+  .contact-map-buttons .button {
+    width: 100%;
+  }
+
+  .contact-bottom-strip-inner {
+    min-height: auto;
+    padding: 28px 0;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 18px;
+  }
+}
+/* =========================================================
+   PRESTIGE DRIVE — FINÁLNA OPRAVA KONFLIKTOV
+   Vlož úplne na KONIEC app/globals.css
+========================================================= */
+
+/* Kontakt a galéria bez širokého horného hero bloku */
+.contact-page > .contact-page-hero,
+.gallery-page > .gallery-page-hero {
+  display: none !important;
+}
+
+/* Obsah začne pod fixným headerom */
+.contact-page .contact-page-section,
+.gallery-page .gallery-page-section {
+  padding-top: 120px;
+}
+
+/* Kontakt — jednoznačný layout bez starých konfliktov */
+.contact-page .contact-page-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.86fr) minmax(430px, 1.14fr);
+  align-items: center;
+  gap: 42px;
+}
+
+.contact-page .contact-map-card {
+  position: relative;
+  width: 100%;
+  height: 470px;
+  min-height: 470px;
+  padding: 0;
+  display: block;
+  overflow: hidden;
+  border: 1px solid rgba(211, 176, 94, 0.28);
+  border-radius: 15px;
+  background: #0a0a0a;
+  box-shadow: 0 24px 65px rgba(0, 0, 0, 0.36);
+}
+
+.contact-page .contact-map-card iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  max-height: none;
+  display: block;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  filter: saturate(0.82) contrast(1.02);
+}
+
+.contact-page .contact-map-shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.contact-page .contact-map-info {
+  position: absolute;
+  z-index: 2;
+  left: 21px;
+  bottom: 21px;
+  width: min(335px, calc(100% - 42px));
+}
+
+/* Odstráni starý široký CTA blok, ak ešte zostal v galérii */
+.gallery-page .gallery-page-cta {
+  display: none !important;
+}
+
+@media (max-width: 980px) {
+  .contact-page .contact-page-grid {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .contact-page .contact-map-card {
+    height: 430px;
+    min-height: 430px;
+  }
+}
+
+@media (max-width: 640px) {
+  .contact-page .contact-page-section,
+  .gallery-page .gallery-page-section {
+    padding-top: 100px;
+  }
+
+  .contact-page .contact-map-card {
+    height: 390px;
+    min-height: 390px;
+  }
+
+  .contact-page .contact-map-info {
+    right: 14px;
+    bottom: 14px;
+    left: 14px;
+    width: auto;
+  }
+}
+/* =========================================================
+   ZAROVNANIE HEADERA S TEXTOM V HERO
+========================================================= */
+
+.site-header .site-header-inner {
+  transform: translateX(-80px);
+}
+
+/* Na menších obrazovkách posun vypneme */
+@media (max-width: 1300px) {
+  .site-header .site-header-inner {
+    transform: none;
+  }
+
+  .prestige-hero-container {
+    transform: none;
+  }
+}
+
+/* =========================================================
+   PRESTIGE DRIVE — FINÁLNY STABILNÝ BLOK
+   Tento blok je zámerne posledný a rieši staršie konflikty.
+========================================================= */
+
+/* Spoločná os headera a homepage hero na širokých monitoroch */
+@media (min-width: 1301px) {
+  .site-header .site-header-inner {
+    transform: translateX(-80px);
+  }
+}
+
+/* Posun nesmie poškodiť tablet ani mobil */
+@media (max-width: 1300px) {
+  .site-header .site-header-inner {
+    transform: none;
+  }
+}
+
+/* KONTAKT — stránka bez horného širokého hero a bez spodného CTA */
+.contact-page > .contact-page-hero,
+.contact-page .contact-bottom-strip {
+  display: none !important;
+}
+
+.contact-page .contact-page-section {
+  padding: 150px 0 82px;
+  background:
+    radial-gradient(
+      circle at 76% 42%,
+      rgba(198, 161, 91, 0.055),
+      transparent 31%
+    ),
+    #050505;
+}
+
+.contact-page .contact-page-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.86fr) minmax(430px, 1.14fr);
+  align-items: center;
+  gap: 42px;
+}
+
+.contact-page .contact-page-info h1,
+.contact-page .contact-page-info h2 {
+  max-width: 560px;
+  margin: 14px 0 0;
+  color: #f1eee8;
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: clamp(42px, 4.7vw, 61px);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+}
+
+.contact-page .contact-page-intro {
+  max-width: 530px;
+  margin: 18px 0 0;
+  color: rgba(255, 255, 255, 0.52);
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+.contact-page .contact-info-list {
+  margin-top: 27px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 11px;
+}
+
+.contact-page .contact-info-card {
+  min-height: 100px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.035),
+      rgba(255, 255, 255, 0.008)
+    ),
+    #090909;
+  transition:
+    transform 0.28s ease,
+    border-color 0.28s ease,
+    background 0.28s ease,
+    box-shadow 0.28s ease;
+}
+
+.contact-page .contact-info-card:hover {
+  border-color: rgba(215, 182, 101, 0.42);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(205, 163, 79, 0.075),
+      rgba(255, 255, 255, 0.008)
+    ),
+    #0a0a0a;
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.28);
+  transform: translateY(-4px);
+}
+
+.contact-page .contact-info-card > span {
+  margin-bottom: 9px;
+  color: #d7b665;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+.contact-page .contact-info-card a,
+.contact-page .contact-info-card p {
+  margin: 0;
+  overflow-wrap: anywhere;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.contact-page .contact-quick-actions {
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.contact-page .contact-quick-actions .button {
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.contact-page .contact-quick-actions .button:hover {
+  box-shadow: 0 12px 30px rgba(201, 164, 84, 0.22);
+  transform: translateY(-3px);
+}
+
+/* Interaktívna mapa */
+.contact-page .contact-map-card {
+  position: relative;
+  width: 100%;
+  height: 470px;
+  min-height: 470px;
+  padding: 0;
+  display: block;
+  overflow: hidden;
+  border: 1px solid rgba(211, 176, 94, 0.28);
+  border-radius: 15px;
+  background: #0a0a0a;
+  box-shadow: 0 24px 65px rgba(0, 0, 0, 0.36);
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.contact-page .contact-map-card:hover {
+  border-color: rgba(218, 181, 98, 0.42);
+  box-shadow: 0 34px 78px rgba(0, 0, 0, 0.44);
+  transform: translateY(-5px);
+}
+
+.contact-page .contact-map-card iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  max-height: none;
+  display: block;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  filter: saturate(0.82) contrast(1.02);
+}
+
+.contact-page .contact-map-shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.5) 0%,
+      rgba(0, 0, 0, 0.08) 42%,
+      transparent 68%
+    );
+}
+
+.contact-page .contact-map-info {
+  position: absolute;
+  z-index: 2;
+  left: 18px;
+  bottom: 18px;
+  width: min(305px, calc(100% - 36px));
+  padding: 19px;
+  border: 1px solid rgba(221, 184, 100, 0.34);
+  border-radius: 12px;
+  background: rgba(8, 8, 8, 0.84);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.38);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.contact-page .contact-map-info h2,
+.contact-page .contact-map-info h3 {
+  margin: 10px 0 0;
+  color: #f2efe9;
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.contact-page .contact-map-buttons {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.contact-page .contact-map-buttons .button {
+  min-height: 42px;
+  padding: 10px 15px;
+  font-size: 8px;
+}
+
+/* GALÉRIA — bez horného širokého hero a bez veľkého CTA */
+.gallery-page > .gallery-page-hero,
+.gallery-page .gallery-page-cta {
+  display: none !important;
+}
+
+.gallery-page .gallery-page-section {
+  padding-top: 130px;
+}
+
+/* Tablet */
+@media (max-width: 980px) {
+  .contact-page .contact-page-section {
+    padding: 126px 0 68px;
+  }
+
+  .contact-page .contact-page-grid {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .contact-page .contact-page-info {
+    max-width: 720px;
+  }
+
+  .contact-page .contact-map-card {
+    height: 430px;
+    min-height: 430px;
+  }
+
+  .gallery-page .gallery-page-section {
+    padding-top: 112px;
+  }
+}
+
+/* Mobil */
+@media (max-width: 640px) {
+  .contact-page .contact-page-section {
+    padding: 104px 0 54px;
+  }
+
+  .contact-page .contact-page-info h1,
+  .contact-page .contact-page-info h2 {
+    font-size: clamp(39px, 12vw, 52px);
+  }
+
+  .contact-page .contact-info-list {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-page .contact-info-card {
+    min-height: auto;
+  }
+
+  .contact-page .contact-quick-actions {
+    display: grid;
+  }
+
+  .contact-page .contact-quick-actions .button {
+    width: 100%;
+  }
+
+  .contact-page .contact-map-card {
+    height: 390px;
+    min-height: 390px;
+  }
+
+  .contact-page .contact-map-info {
+    right: 14px;
+    bottom: 14px;
+    left: 14px;
+    width: auto;
+    padding: 17px;
+  }
+
+  .contact-page .contact-map-buttons {
+    display: grid;
+  }
+
+  .contact-page .contact-map-buttons .button {
+    width: 100%;
+  }
+
+  .gallery-page .gallery-page-section {
+    padding-top: 100px;
+  }
+}
+
+/* =========================================================
+   HOMEPAGE GALÉRIA — VEĽKÉ VOLVO + TEXTOVÁ KARTA
+   Tento blok musí zostať úplne na konci súboru.
+========================================================= */
+
+.gallery-preview .gallery-feature {
+  width: 100%;
+  margin-top: 42px;
+}
+
+.gallery-preview .gallery-feature-image {
+  position: relative;
+  width: 100%;
+  min-height: 650px;
+  overflow: hidden;
+  border: 1px solid rgba(198, 161, 91, 0.25);
+  border-radius: 18px;
+  background: #090909;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+}
+
+.gallery-preview .gallery-feature-image > img {
+  object-fit: cover;
+  object-position: center 58%;
+  transition: transform 0.7s ease;
+}
+
+.gallery-preview .gallery-feature-image:hover > img {
+  transform: scale(1.025);
+}
+
+.gallery-preview .gallery-feature-shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.88) 0%,
+      rgba(0, 0, 0, 0.24) 42%,
+      transparent 70%
+    ),
+    linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.16),
+      transparent 55%
+    );
+}
+
+.gallery-preview .gallery-feature-card {
+  position: absolute;
+  right: 30px;
+  bottom: 30px;
+  z-index: 2;
+  width: min(430px, calc(100% - 60px));
+  padding: 30px;
+  border: 1px solid rgba(227, 196, 125, 0.38);
+  border-radius: 16px;
+  background: rgba(8, 8, 8, 0.88);
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.gallery-preview .gallery-feature-eyebrow {
+  margin: 0;
+  color: #d8b86e;
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: clamp(24px, 2.4vw, 34px);
+  font-style: italic;
+  line-height: 1.1;
+}
+
+.gallery-preview .gallery-feature-card h3 {
+  margin: 13px 0 0;
+  color: #ffffff;
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: clamp(30px, 3vw, 42px);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.gallery-preview .gallery-feature-card h3 span {
+  display: block;
+  margin-top: 6px;
+}
+
+.gallery-preview .gallery-feature-stars {
+  margin-top: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: #d8b86e;
+  font-size: 25px;
+  line-height: 1;
+  text-shadow: 0 0 20px rgba(216, 184, 110, 0.32);
+}
+
+@media (max-width: 900px) {
+  .gallery-preview .gallery-feature-image {
+    min-height: 540px;
+  }
+
+  .gallery-preview .gallery-feature-card {
+    right: 20px;
+    bottom: 20px;
+    width: min(390px, calc(100% - 40px));
+    padding: 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .gallery-preview .gallery-feature {
+    margin-top: 28px;
+  }
+
+  .gallery-preview .gallery-feature-image {
+    min-height: 520px;
+    border-radius: 13px;
+  }
+
+  .gallery-preview .gallery-feature-image > img {
+    object-position: 64% center;
+  }
+
+  .gallery-preview .gallery-feature-card {
+    right: 14px;
+    bottom: 14px;
+    left: 14px;
+    width: auto;
+    padding: 21px 17px;
+  }
+
+  .gallery-preview .gallery-feature-eyebrow {
+    font-size: 23px;
+  }
+
+  .gallery-preview .gallery-feature-card h3 {
+    font-size: 29px;
+  }
+
+  .gallery-preview .gallery-feature-stars {
+    gap: 8px;
+    font-size: 20px;
+  }
+}
+
+/* =========================================================
+   FINÁLNA ÚPRAVA HEADERA A LOGA PRESTIGE
+   Tento blok musí zostať úplne na konci globals.css.
+========================================================= */
+
+.site-header .site-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.site-header .site-logo-image {
+  position: relative;
+  width: 88px !important;
+  height: 76px !important;
+  flex: 0 0 88px;
+  overflow: hidden !important;
+  border: 0 !important;
+  outline: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.site-header .site-logo-image::before,
+.site-header .site-logo-image::after {
+  display: none !important;
+  content: none !important;
+}
+
+.site-header .site-logo-image img {
+  width: 100% !important;
+  height: 100% !important;
+  padding: 0 !important;
+  border: 0 !important;
+  outline: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  object-fit: contain !important;
+  object-position: center !important;
+}
+
+.site-header .site-logo-copy {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  gap: 7px;
+  min-width: max-content;
+}
+
+.site-header .site-logo-copy strong {
+  margin: 0;
+  color: #e3c47d;
+  font-family: var(--font-heading), "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(34px, 2.55vw, 45px);
+  font-weight: 600;
+  line-height: 0.84;
+  letter-spacing: -0.035em;
+  text-shadow: 0 4px 22px rgba(198, 161, 91, 0.18);
+}
+
+.site-header .site-logo-copy small {
+  margin: 0;
+  color: rgba(236, 233, 227, 0.58);
+  font-size: 8px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.site-header .site-header-inner {
+  min-height: 102px;
+}
+
+/* Tablet */
+@media (max-width: 1100px) {
+  .site-header .site-logo {
+    gap: 15px;
+  }
+
+  .site-header .site-logo-image {
+    width: 74px !important;
+    height: 66px !important;
+    flex-basis: 74px;
+  }
+
+  .site-header .site-logo-copy strong {
+    font-size: 34px;
+  }
+
+  .site-header .site-logo-copy small {
+    font-size: 7px;
+    letter-spacing: 0.17em;
+  }
+
+  .site-header .site-header-inner {
+    min-height: 90px;
+  }
+}
+
+/* Mobil */
+@media (max-width: 850px) {
+  .site-header .site-header-inner {
+    min-height: 78px;
+  }
+
+  .site-header .site-logo {
+    gap: 11px;
+  }
+
+  .site-header .site-logo-image {
+    width: 56px !important;
+    height: 54px !important;
+    flex-basis: 56px;
+  }
+
+  .site-header .site-logo-copy strong {
+    font-size: 27px;
+    line-height: 0.9;
+  }
+
+  .site-header .site-logo-copy small {
+    display: none;
+  }
+}
+
+@media (max-width: 430px) {
+  .site-header .site-logo-image {
+    width: 49px !important;
+    height: 48px !important;
+    flex-basis: 49px;
+  }
+
+  .site-header .site-logo-copy strong {
+    font-size: 24px;
+  }
+}
+
+/* Logo v pätičke bez CSS rámika */
+.footer-brand img {
+  border: 0 !important;
+  outline: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  object-fit: contain !important;
+}
+
+/* =========================================================
+   FINÁLNA OPRAVA HEADERA — PRESTIGE
+   Tento blok musí zostať úplne na konci súboru.
+========================================================= */
+
+.site-header {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+  left: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.055);
+  background: rgba(4, 4, 4, 0.82);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.site-header-scrolled {
+  border-bottom-color: rgba(198, 161, 91, 0.2);
+  background: rgba(4, 4, 4, 0.96);
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.38);
+}
+
+.site-header .site-header-inner {
+  min-height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 34px;
+}
+
+.site-header .site-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.site-header .site-logo-image {
+  position: relative;
+  width: 64px !important;
+  height: 70px !important;
+  flex: 0 0 64px;
+  overflow: hidden !important;
+  border: 0 !important;
+  outline: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.site-header .site-logo-image::before,
+.site-header .site-logo-image::after {
+  display: none !important;
+  content: none !important;
+}
+
+.site-header .site-logo-image img {
+  width: 100% !important;
+  height: 100% !important;
+  padding: 0 !important;
+  border: 0 !important;
+  outline: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  object-fit: cover !important;
+  object-position: center 27% !important;
+  transform: scale(2.15);
+  transform-origin: center 27%;
+}
+
+.site-header .site-logo-copy {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  gap: 7px;
+  min-width: max-content;
+}
+
+.site-header .site-logo-copy strong {
+  margin: 0;
+  background:
+    linear-gradient(
+      105deg,
+      #9b6e28 0%,
+      #e8c875 33%,
+      #f4df9f 50%,
+      #c39142 72%,
+      #efcf82 100%
+    );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent;
+  font-family:
+    var(--font-heading),
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+  font-size: clamp(40px, 3vw, 49px) !important;
+  font-weight: 600 !important;
+  line-height: 0.84;
+  letter-spacing: -0.045em;
+  text-shadow: 0 8px 28px rgba(198, 161, 91, 0.11);
+}
+
+.site-header .site-logo-copy small {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.54) !important;
+  font-size: 7px !important;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0.24em !important;
+  text-transform: uppercase;
+}
+
+.site-header .site-header-menu {
+  display: flex;
+  align-items: center;
+  gap: 31px;
+}
+
+.site-header .site-navigation {
+  display: flex;
+  align-items: center;
+  gap: 29px;
+}
+
+.site-header .site-navigation a {
+  position: relative;
+  padding-block: 36px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transition:
+    color 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.site-header .site-navigation a::after {
+  position: absolute;
+  right: 0;
+  bottom: 27px;
+  left: 0;
+  height: 1px;
+  background: linear-gradient(90deg, #956b29, #edcf87);
+  content: "";
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.25s ease;
+}
+
+.site-header .site-navigation a:hover,
+.site-header .site-navigation a.active {
+  color: #e8cb83;
+}
+
+.site-header .site-navigation a:hover::after,
+.site-header .site-navigation a.active::after {
+  transform: scaleX(1);
+}
+
+.site-header .site-header-phone {
+  min-width: 156px;
+  padding: 10px 17px;
+  display: grid;
+  gap: 2px;
+  border: 1px solid rgba(198, 161, 91, 0.3);
+  border-radius: 8px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(198, 161, 91, 0.07),
+      rgba(255, 255, 255, 0.01)
+    );
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.site-header .site-header-phone:hover {
+  border-color: rgba(227, 196, 125, 0.72);
+  background: rgba(198, 161, 91, 0.11);
+  box-shadow: 0 13px 32px rgba(0, 0, 0, 0.28);
+  transform: translateY(-2px);
+}
+
+.site-header .site-header-phone span {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 7px;
+  font-weight: 800;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+.site-header .site-header-phone strong {
+  color: #e4c578;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.site-header .menu-toggle {
+  width: 44px;
+  height: 44px;
+  display: none;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.site-header .menu-toggle span {
+  width: 100%;
+  height: 1px;
+  display: block;
+  background: #e3c47d;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.site-header .menu-toggle span + span {
+  margin-top: 6px;
+}
+
+.site-header .menu-toggle.is-open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.site-header .menu-toggle.is-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.site-header .menu-toggle.is-open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Logo vo footeri bez rámika */
+.footer-brand img {
+  border: 0 !important;
+  outline: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  object-fit: contain !important;
+}
+
+@media (max-width: 1100px) {
+  .site-header .site-header-inner {
+    min-height: 88px;
+  }
+
+  .site-header .site-logo {
+    gap: 13px;
+  }
+
+  .site-header .site-logo-image {
+    width: 56px !important;
+    height: 62px !important;
+    flex-basis: 56px;
+  }
+
+  .site-header .site-logo-copy strong {
+    font-size: 35px !important;
+  }
+
+  .site-header .site-logo-copy small {
+    font-size: 6px !important;
+    letter-spacing: 0.17em !important;
+  }
+
+  .site-header .site-navigation {
+    gap: 19px;
+  }
+
+  .site-header .site-header-menu {
+    gap: 20px;
+  }
+
+  .site-header .site-header-phone {
+    min-width: 142px;
+  }
+}
+
+@media (max-width: 850px) {
+  .site-header .site-header-inner {
+    min-height: 76px;
+  }
+
+  .site-header .site-logo {
+    gap: 10px;
+  }
+
+  .site-header .site-logo-image {
+    width: 46px !important;
+    height: 52px !important;
+    flex-basis: 46px;
+  }
+
+  .site-header .site-logo-copy strong {
+    font-size: 28px !important;
+    line-height: 0.9;
+  }
+
+  .site-header .site-logo-copy small {
+    display: none;
+  }
+
+  .site-header .menu-toggle {
+    display: block;
+  }
+
+  .site-header .site-header-menu {
+    position: fixed;
+    inset: 76px 0 0;
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+    gap: 28px;
+    padding: 42px 24px;
+    background:
+      radial-gradient(
+        circle at 85% 5%,
+        rgba(198, 161, 91, 0.13),
+        transparent 34%
+      ),
+      rgba(4, 4, 4, 0.99);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-14px);
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  .site-header .site-header-menu.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .site-header .site-navigation {
+    display: grid;
+    gap: 0;
+  }
+
+  .site-header .site-navigation a {
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    color: #ece8df;
+    font-family: var(--font-heading), Georgia, serif;
+    font-size: 29px;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .site-header .site-navigation a::after {
+    display: none;
+  }
+
+  .site-header .site-header-phone {
+    width: 100%;
+    min-height: 58px;
+    place-content: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 430px) {
+  .site-header .site-logo-image {
+    width: 42px !important;
+    height: 48px !important;
+    flex-basis: 42px;
+  }
+
+  .site-header .site-logo-copy strong {
+    font-size: 25px !important;
+  }
+}
+
+/* =========================================================
+   FINAL FIX — HORIZONTÁLNE LOGO HEADER
+   Musí zostať úplne na konci globals.css.
+========================================================= */
+
+.site-header .site-logo {
+  display: inline-flex !important;
+  align-items: center !important;
+  flex: 0 0 auto !important;
+  width: auto !important;
+  max-width: none !important;
+  overflow: visible !important;
+}
+
+.site-header .site-logo-image {
+  position: relative !important;
+  display: block !important;
+  width: 300px !important;
+  height: 72px !important;
+  flex: 0 0 300px !important;
+  overflow: hidden !important;
+  border: 0 !important;
+  outline: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.site-header .site-logo-image::before,
+.site-header .site-logo-image::after {
+  display: none !important;
+  content: none !important;
+}
+
+.site-header .site-logo-image img {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  padding: 0 !important;
+  border: 0 !important;
+  outline: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  object-fit: contain !important;
+  object-position: left center !important;
+  transform: none !important;
+  transform-origin: center !important;
+}
+
+/* Starý text vedľa loga sa pri novom obrázku nepoužíva. */
+.site-header .site-logo-copy {
+  display: none !important;
+}
+
+@media (max-width: 1100px) {
+  .site-header .site-logo-image {
+    width: 245px !important;
+    height: 64px !important;
+    flex-basis: 245px !important;
+  }
+}
+
+@media (max-width: 850px) {
+  .site-header .site-logo-image {
+    width: 205px !important;
+    height: 54px !important;
+    flex-basis: 205px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-header .site-logo-image {
+    width: 165px !important;
+    height: 46px !important;
+    flex-basis: 165px !important;
+  }
+}
+
+/* =========================================================
+   FINÁLNA OPRAVA HEADERA A LOGA
+   Tento blok nechaj úplne na konci globals.css.
+   Používa obrázok: /public/images/logo-header.png
+========================================================= */
+
+.site-header {
+  position: fixed !important;
+  z-index: 1000 !important;
+  top: 0 !important;
+  right: 0 !important;
+  left: 0 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.055) !important;
+  background: rgba(3, 3, 3, 0.84) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+}
+
+.site-header-scrolled {
+  border-bottom-color: rgba(198, 161, 91, 0.2) !important;
+  background: rgba(3, 3, 3, 0.97) !important;
+  box-shadow: 0 14px 42px rgba(0, 0, 0, 0.38) !important;
+}
+
+.site-header .site-header-inner {
+  width: min(var(--container), calc(100% - 48px)) !important;
+  min-height: 96px !important;
+  margin-inline: auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 34px !important;
+}
+
+/* Celý klikateľný blok loga */
+.site-header .site-logo {
+  width: 315px !important;
+  height: 78px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  flex: 0 0 315px !important;
+  overflow: hidden !important;
+  text-decoration: none !important;
+}
+
+/* Kontajner horizontálneho loga */
+.site-header .site-logo-image {
+  position: relative !important;
+  width: 315px !important;
+  height: 78px !important;
+  display: block !important;
+  flex: 0 0 315px !important;
+  overflow: hidden !important;
+  border: 0 !important;
+  outline: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.site-header .site-logo-image::before,
+.site-header .site-logo-image::after {
+  display: none !important;
+  content: none !important;
+}
+
+/*
+  Logo-header.png má okolo grafiky voľné miesto.
+  Zväčšenie 1.85 odstráni dojem malého loga bez zmeny obrázka.
+*/
+.site-header .site-logo-image img {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  padding: 0 !important;
+  border: 0 !important;
+  outline: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  object-fit: contain !important;
+  object-position: left center !important;
+  transform: scale(1.85) !important;
+  transform-origin: left center !important;
+}
+
+/* Pri hotovom horizontálnom logu sa samostatný text nepoužíva */
+.site-header .site-logo-copy {
+  display: none !important;
+}
+
+/* Navigácia */
+.site-header .site-header-menu {
+  display: flex !important;
+  align-items: center !important;
+  gap: 31px !important;
+}
+
+.site-header .site-navigation {
+  display: flex !important;
+  align-items: center !important;
+  gap: 28px !important;
+}
+
+.site-header .site-navigation a {
+  position: relative !important;
+  padding-block: 37px !important;
+  color: rgba(255, 255, 255, 0.72) !important;
+  font-size: 9px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.15em !important;
+  text-transform: uppercase !important;
+}
+
+.site-header .site-navigation a::after {
+  bottom: 27px !important;
+  height: 1px !important;
+  background: linear-gradient(90deg, #956b29, #edcf87) !important;
+}
+
+.site-header .site-navigation a:hover,
+.site-header .site-navigation a.active {
+  color: #e8cb83 !important;
+}
+
+/* Rezervačný telefón */
+.site-header .site-header-phone {
+  min-width: 156px !important;
+  padding: 10px 17px !important;
+  display: grid !important;
+  gap: 2px !important;
+  border: 1px solid rgba(198, 161, 91, 0.3) !important;
+  border-radius: 8px !important;
+  background: linear-gradient(
+    145deg,
+    rgba(198, 161, 91, 0.07),
+    rgba(255, 255, 255, 0.01)
+  ) !important;
+}
+
+.site-header .site-header-phone span {
+  color: rgba(255, 255, 255, 0.4) !important;
+  font-size: 7px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.17em !important;
+  text-transform: uppercase !important;
+}
+
+.site-header .site-header-phone strong {
+  color: #e4c578 !important;
+  font-size: 12px !important;
+}
+
+/* Svadobná fotografia v prvej karte služieb */
+.service-card-wedding {
+  background-image: url("/images/wedding-hero.png") !important;
+  background-position: center 55% !important;
+  background-size: cover !important;
+}
+
+/* VIP karta ostáva s pôvodným autom */
+.service-card-vip {
+  background-image: url("/images/hero-volvo.png") !important;
+  background-position: 80% center !important;
+  background-size: cover !important;
+}
+
+/* Tablet */
+@media (max-width: 1100px) {
+  .site-header .site-logo,
+  .site-header .site-logo-image {
+    width: 255px !important;
+    height: 68px !important;
+    flex-basis: 255px !important;
+  }
+
+  .site-header .site-logo-image img {
+    transform: scale(1.75) !important;
+  }
+
+  .site-header .site-navigation {
+    gap: 19px !important;
+  }
+
+  .site-header .site-header-menu {
+    gap: 20px !important;
+  }
+
+  .site-header .site-header-phone {
+    min-width: 142px !important;
+  }
+}
+
+/* Mobil */
+@media (max-width: 850px) {
+  .site-header .site-header-inner {
+    min-height: 76px !important;
+  }
+
+  .site-header .site-logo,
+  .site-header .site-logo-image {
+    width: 205px !important;
+    height: 56px !important;
+    flex-basis: 205px !important;
+  }
+
+  .site-header .site-logo-image img {
+    transform: scale(1.7) !important;
+  }
+
+  .site-header .menu-toggle {
+    display: block !important;
+  }
+
+  .site-header .site-header-menu {
+    position: fixed !important;
+    inset: 76px 0 0 !important;
+    display: flex !important;
+    align-items: stretch !important;
+    flex-direction: column !important;
+    gap: 28px !important;
+    padding: 42px 24px !important;
+    background:
+      radial-gradient(
+        circle at 85% 5%,
+        rgba(198, 161, 91, 0.13),
+        transparent 34%
+      ),
+      rgba(4, 4, 4, 0.99) !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: translateY(-14px) !important;
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease,
+      transform 0.3s ease !important;
+  }
+
+  .site-header .site-header-menu.is-open {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+  }
+
+  .site-header .site-navigation {
+    display: grid !important;
+    gap: 0 !important;
+  }
+
+  .site-header .site-navigation a {
+    padding: 16px 0 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    color: #ece8df !important;
+    font-family: var(--font-heading), Georgia, serif !important;
+    font-size: 29px !important;
+    font-weight: 400 !important;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+  }
+
+  .site-header .site-navigation a::after {
+    display: none !important;
+  }
+
+  .site-header .site-header-phone {
+    width: 100% !important;
+    min-height: 58px !important;
+    place-content: center !important;
+    text-align: center !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-header .site-header-inner {
+    width: min(100% - 28px, var(--container)) !important;
+  }
+
+  .site-header .site-logo,
+  .site-header .site-logo-image {
+    width: 168px !important;
+    height: 49px !important;
+    flex-basis: 168px !important;
+  }
+
+  .site-header .site-logo-image img {
+    transform: scale(1.65) !important;
+  }
+}
+
+/* =========================================================
+   VIP TRANSFERY – ORIENTAČNÉ CENY
+========================================================= */
+
+.pd-transfer-prices {
+  position: relative;
+  padding: 120px 0;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background:
+    radial-gradient(
+      circle at 88% 10%,
+      rgba(198, 161, 91, 0.13),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 10% 90%,
+      rgba(198, 161, 91, 0.05),
+      transparent 30%
+    ),
+    #070707;
+}
+
+.pd-transfer-prices::before {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: min(1160px, calc(100% - 48px));
+  height: 1px;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(227, 196, 125, 0.45),
+      transparent
+    );
+  content: "";
+  transform: translateX(-50%);
+}
+
+.pd-transfer-prices-heading {
+  margin-bottom: 58px;
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1.05fr)
+    minmax(320px, 0.75fr);
+  gap: 80px;
+  align-items: end;
+}
+
+.pd-transfer-prices-heading > div {
+  max-width: 720px;
+}
+
+.pd-transfer-prices-heading h2 {
+  margin: 15px 0 0;
+  color: #f5f2ec;
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: clamp(44px, 5vw, 70px);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+}
+
+.pd-transfer-prices-heading h2 span {
+  display: block;
+  margin-top: 8px;
+  color: #d9b86b;
+}
+
+.pd-transfer-prices-heading > p {
+  max-width: 500px;
+  margin: 0;
+  color: #aaa59d;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+/* Karty */
+
+.pd-transfer-prices-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.pd-transfer-price-card {
+  position: relative;
+  min-height: 365px;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.085);
+  border-radius: 18px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.035),
+      rgba(255, 255, 255, 0.006)
+    ),
+    #0d0d0d;
+  box-shadow:
+    0 24px 55px rgba(0, 0, 0, 0.28);
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.pd-transfer-price-card::before {
+  position: absolute;
+  top: -90px;
+  right: -90px;
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  background: rgba(198, 161, 91, 0.1);
+  content: "";
+  filter: blur(35px);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.pd-transfer-price-card::after {
+  position: absolute;
+  right: 30px;
+  bottom: 0;
+  left: 30px;
+  height: 1px;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(227, 196, 125, 0.55),
+      transparent
+    );
+  content: "";
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.pd-transfer-price-card:hover {
+  border-color: rgba(227, 196, 125, 0.48);
+  box-shadow:
+    0 32px 75px rgba(0, 0, 0, 0.42);
+  transform: translateY(-8px);
+}
+
+.pd-transfer-price-card:hover::before,
+.pd-transfer-price-card:hover::after {
+  opacity: 1;
+}
+
+/* Horná časť karty */
+
+.pd-transfer-price-top {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.pd-transfer-price-number {
+  width: 46px;
+  height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1px solid rgba(198, 161, 91, 0.42);
+  border-radius: 50%;
+  color: #e3c47d;
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: 13px;
+}
+
+.pd-transfer-price-label {
+  color: rgba(255, 255, 255, 0.38);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* Mesto */
+
+.pd-transfer-price-card h3 {
+  position: relative;
+  z-index: 2;
+  margin: 35px 0 0;
+  color: #f4f1eb;
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: clamp(31px, 3vw, 43px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.025em;
+}
+
+/* Cena */
+
+.pd-transfer-price-card > strong {
+  position: relative;
+  z-index: 2;
+  display: block;
+  margin-top: 17px;
+  background:
+    linear-gradient(
+      105deg,
+      #a97d35,
+      #efd38d 48%,
+      #bd9147
+    );
+  background-clip: text;
+  color: transparent;
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: clamp(36px, 3.5vw, 50px);
+  font-weight: 500;
+  line-height: 1;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Popis */
+
+.pd-transfer-price-card > p {
+  position: relative;
+  z-index: 2;
+  margin: 21px 0 0;
+  color: #96918a;
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+/* Odkaz */
+
+.pd-transfer-price-card .pd-service-link {
+  position: relative;
+  z-index: 2;
+  margin-top: auto;
+  padding-top: 31px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.075);
+  color: #dfc174;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transition: color 0.25s ease;
+}
+
+.pd-transfer-price-card .pd-service-link span {
+  font-size: 17px;
+  transition: transform 0.25s ease;
+}
+
+.pd-transfer-price-card .pd-service-link:hover {
+  color: #f0d38b;
+}
+
+.pd-transfer-price-card .pd-service-link:hover span {
+  transform: translate(4px, -4px);
+}
+
+/* Poznámka pod cenami */
+
+.pd-transfer-prices-note {
+  max-width: 820px;
+  margin: 35px auto 0;
+  padding-top: 25px;
+  border-top: 1px solid rgba(255, 255, 255, 0.065);
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 10px;
+  line-height: 1.85;
+  text-align: center;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1050px) {
+  .pd-transfer-prices-heading {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .pd-transfer-prices-heading > p {
+    max-width: 680px;
+  }
+
+  .pd-transfer-prices-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* =========================================================
+   MOBIL
+========================================================= */
+
+@media (max-width: 640px) {
+  .pd-transfer-prices {
+    padding: 82px 0;
+  }
+
+  .pd-transfer-prices::before {
+    width: calc(100% - 28px);
+  }
+
+  .pd-transfer-prices-heading {
+    margin-bottom: 38px;
+  }
+
+  .pd-transfer-prices-heading h2 {
+    font-size: clamp(39px, 11vw, 52px);
+  }
+
+  .pd-transfer-prices-heading > p {
+    font-size: 13px;
+    line-height: 1.75;
+  }
+
+  .pd-transfer-prices-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .pd-transfer-price-card {
+    min-height: 320px;
+    padding: 26px;
+    border-radius: 15px;
+  }
+
+  .pd-transfer-price-card h3 {
+    margin-top: 28px;
+  }
+
+  .pd-transfer-price-card .pd-service-link {
+    padding-top: 25px;
+  }
+
+  .pd-transfer-prices-note {
+    margin-top: 27px;
+  }
+}
+/* =========================================================
+   KONTAKT – FINÁLNA OPRAVA ROZLOŽENIA, MAPY A SOCIÁLNYCH SIETÍ
+   Tento blok musí zostať úplne na konci globals.css.
+========================================================= */
+
+.contact-page-section {
+  padding: 130px 0 110px;
+  background:
+    radial-gradient(circle at 84% 14%, rgba(198, 161, 91, 0.09), transparent 28%),
+    #080808;
+}
+
+.contact-page-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(460px, 1.08fr);
+  gap: 64px;
+  align-items: start;
+}
+
+.contact-page-info {
+  min-width: 0;
+}
+
+.contact-page-info > .section-label {
+  margin-bottom: 14px;
+}
+
+.contact-page-info h1 {
+  margin: 0 0 22px;
+  color: var(--white);
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: clamp(44px, 5vw, 68px);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+}
+
+.contact-page-intro {
+  max-width: 590px;
+  margin: 0 0 36px;
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+.contact-info-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.contact-info-card {
+  min-height: 120px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 16px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.025), transparent),
+    #0f0f0f;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.contact-info-card:hover {
+  border-color: rgba(227, 196, 125, 0.42);
+  transform: translateY(-3px);
+}
+
+.contact-info-card > span {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--gold-light);
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: 0.17em;
+}
+
+.contact-info-card a,
+.contact-info-card p {
+  margin: 0;
+  color: #e3dfd8;
+  font-size: 13px;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+
+.contact-quick-actions {
+  margin-top: 26px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* Sociálne siete */
+
+.contact-socials {
+  width: 100%;
+  margin-top: 38px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.contact-socials-heading {
+  margin-bottom: 20px;
+}
+
+.contact-socials-heading .section-label {
+  margin: 0 0 9px;
+}
+
+.contact-socials-heading h2 {
+  margin: 0;
+  color: #f4f0e8;
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: clamp(30px, 3vw, 42px);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+}
+
+.contact-socials-list {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
+}
+
+.contact-social-link {
+  position: relative;
+  min-width: 0;
+  min-height: 86px;
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr) 18px;
+  align-items: center;
+  gap: 13px;
+  padding: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 14px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.008)),
+    #0e0e0e;
+  color: #fff;
+  text-decoration: none;
+  transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+}
+
+.contact-social-link:hover {
+  border-color: rgba(227, 196, 125, 0.52);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(198, 161, 91, 0.14), transparent 42%),
+    #111;
+  transform: translateY(-3px);
+}
+
+.contact-social-icon {
+  width: 42px !important;
+  height: 42px !important;
+  min-width: 42px !important;
+  min-height: 42px !important;
+  max-width: 42px !important;
+  max-height: 42px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(198, 161, 91, 0.42);
+  border-radius: 50%;
+  color: var(--gold-light);
+  background: rgba(198, 161, 91, 0.055);
+  line-height: 0;
+}
+
+.contact-social-icon svg {
+  position: static !important;
+  inset: auto !important;
+  width: 20px !important;
+  height: 20px !important;
+  min-width: 20px !important;
+  min-height: 20px !important;
+  max-width: 20px !important;
+  max-height: 20px !important;
+  display: block !important;
+  flex: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  transform: none !important;
+}
+
+.contact-social-copy {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.contact-social-copy small {
+  color: rgba(255, 255, 255, 0.42);
+  font-size: 7px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+.contact-social-copy strong {
+  max-width: 100%;
+  overflow: hidden;
+  color: #eee9df;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.contact-social-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold-light);
+  font-size: 15px;
+  line-height: 1;
+  transition: transform 0.25s ease;
+}
+
+.contact-social-link:hover .contact-social-arrow {
+  transform: translate(3px, -3px);
+}
+
+/* Interaktívna mapa */
+
+.contact-map-card {
+  position: sticky;
+  top: 118px;
+  min-height: 620px;
+  padding: 0;
+  display: block;
+  overflow: hidden;
+  border: 1px solid rgba(198, 161, 91, 0.32);
+  border-radius: 22px;
+  background: #0c0c0c;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+}
+
+.contact-map-card iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 620px;
+  border: 0;
+  filter: saturate(0.82) contrast(0.96);
+}
+
+.contact-map-shade {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(to top, rgba(0, 0, 0, 0.72), transparent 48%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.18), transparent 55%);
+}
+
+.contact-map-info {
+  position: absolute;
+  z-index: 2;
+  left: 28px;
+  bottom: 28px;
+  width: min(340px, calc(100% - 56px));
+  padding: 26px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  background: rgba(10, 10, 10, 0.88);
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.38);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.contact-map-label {
+  margin: 0 0 9px !important;
+  color: var(--gold-light) !important;
+  font-size: 8px !important;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+}
+
+.contact-map-info h2 {
+  margin: 0;
+  color: #fff;
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: clamp(28px, 3vw, 38px);
+  font-weight: 500;
+  line-height: 1.05;
+}
+
+.contact-map-address {
+  margin: 9px 0 0 !important;
+  color: #aaa59d !important;
+  font-size: 13px !important;
+}
+
+.contact-map-buttons {
+  margin-top: 21px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.contact-map-buttons .button {
+  min-height: 46px;
+  padding: 11px 17px;
+  font-size: 8px;
+}
+
+@media (max-width: 1100px) {
+  .contact-page-grid {
+    grid-template-columns: 1fr;
+    gap: 46px;
+  }
+
+  .contact-map-card {
+    position: relative;
+    top: auto;
+    min-height: 560px;
+  }
+
+  .contact-map-card iframe {
+    min-height: 560px;
+  }
+}
+
+@media (max-width: 700px) {
+  .contact-page-section {
+    padding: 105px 0 80px;
+  }
+
+  .contact-info-list,
+  .contact-socials-list {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-page-info h1 {
+    font-size: clamp(40px, 12vw, 54px);
+  }
+
+  .contact-socials {
+    margin-top: 30px;
+    padding-top: 25px;
+  }
+
+  .contact-social-link {
+    min-height: 76px;
+    padding: 14px;
+  }
+
+  .contact-social-icon {
+    width: 39px !important;
+    height: 39px !important;
+    min-width: 39px !important;
+    min-height: 39px !important;
+    max-width: 39px !important;
+    max-height: 39px !important;
+  }
+
+  .contact-social-icon svg {
+    width: 18px !important;
+    height: 18px !important;
+    min-width: 18px !important;
+    min-height: 18px !important;
+    max-width: 18px !important;
+    max-height: 18px !important;
+  }
+
+  .contact-map-card,
+  .contact-map-card iframe {
+    min-height: 500px;
+  }
+
+  .contact-map-info {
+    right: 16px;
+    bottom: 16px;
+    left: 16px;
+    width: auto;
+    padding: 21px;
+  }
+
+  .contact-map-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 430px) {
+  .contact-quick-actions,
+  .contact-map-buttons {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .contact-quick-actions .button,
+  .contact-map-buttons .button {
+    width: 100%;
+  }
+}
+
+
+/* =========================================================
+   FINÁLNA RESPONZÍVNA OPRAVA HERO SEKcie
+   Opravuje pretekanie nadpisu pri zmenšení okna.
+   Tento blok musí zostať úplne na konci globals.css.
+========================================================= */
+
+/* Nadpis sa nikdy nesmie rozšíriť mimo obrazovky */
+.luxury-hero-content,
+.hero-content > div {
+  min-width: 0;
+}
+
+.luxury-hero-title,
+.hero-title {
+  width: 100%;
+  max-width: min(800px, 100%);
+  overflow-wrap: normal;
+  word-break: normal;
+  text-wrap: balance;
+}
+
+.luxury-hero-title span,
+.luxury-hero-title strong,
+.hero-title span,
+.hero-title strong {
+  max-width: 100%;
+}
+
+/* Stredne veľké notebooky a zmenšené okno */
+@media (max-width: 1200px) {
+  .luxury-hero-container,
+  .hero-content {
+    transform: none;
+    width: min(var(--container), calc(100% - 56px));
+    margin-inline: auto;
+    padding-top: 145px;
+    padding-bottom: 105px;
+  }
+
+  .luxury-hero-content {
+    max-width: min(700px, 64vw);
+  }
+
+  .luxury-hero-title,
+  .hero-title {
+    font-size: clamp(54px, 6.2vw, 80px);
+    line-height: 0.95;
+    letter-spacing: -0.045em;
+  }
+
+  .luxury-hero-description,
+  .hero-text {
+    max-width: 560px;
+  }
+}
+
+/* Tablet – text dostane viac priestoru a auto sa posunie doprava */
+@media (max-width: 900px) {
+  .luxury-hero,
+  .hero-section {
+    min-height: 100svh;
+    align-items: flex-end;
+  }
+
+  .luxury-hero-background {
+    background-position: 66% center;
+  }
+
+  .luxury-hero-overlay,
+  .hero-shade {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.94) 0%,
+        rgba(0, 0, 0, 0.82) 50%,
+        rgba(0, 0, 0, 0.35) 100%
+      ),
+      linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.98) 0%,
+        rgba(0, 0, 0, 0.66) 50%,
+        rgba(0, 0, 0, 0.22) 100%
+      );
+  }
+
+  .luxury-hero-container,
+  .hero-content {
+    transform: none;
+    width: min(100% - 36px, var(--container));
+    margin-inline: auto;
+    padding-top: 135px;
+    padding-bottom: 72px;
+  }
+
+  .luxury-hero-content {
+    width: 100%;
+    max-width: 650px;
+  }
+
+  .luxury-hero-title,
+  .hero-title {
+    max-width: 100%;
+    font-size: clamp(47px, 8vw, 67px);
+    line-height: 0.96;
+    letter-spacing: -0.04em;
+  }
+
+  .luxury-hero-description,
+  .hero-text {
+    max-width: 580px;
+    margin-top: 23px;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .luxury-hero-actions,
+  .hero-actions {
+    margin-top: 27px;
+  }
+}
+
+/* Mobil */
+@media (max-width: 600px) {
+  .luxury-hero,
+  .hero-section {
+    min-height: 100svh;
+    align-items: flex-end;
+  }
+
+  .luxury-hero-background {
+    background-position: 64% center;
+  }
+
+  .luxury-hero-overlay,
+  .hero-shade {
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.28) 0%,
+        rgba(0, 0, 0, 0.62) 35%,
+        rgba(0, 0, 0, 0.96) 76%,
+        #030303 100%
+      );
+  }
+
+  .luxury-hero-container,
+  .hero-content {
+    transform: none;
+    width: calc(100% - 28px);
+    margin-inline: auto;
+    padding-top: 118px;
+    padding-bottom: 50px;
+  }
+
+  .luxury-hero-content {
+    width: 100%;
+    max-width: none;
+  }
+
+  .luxury-hero-eyebrow {
+    gap: 10px;
+    margin-bottom: 17px;
+  }
+
+  .luxury-hero-eyebrow-line {
+    width: 30px;
+  }
+
+  .luxury-hero-eyebrow p {
+    font-size: 8px;
+    letter-spacing: 0.18em;
+  }
+
+  .luxury-hero-title,
+  .hero-title {
+    width: 100%;
+    max-width: 100%;
+    font-size: clamp(35px, 10.5vw, 48px);
+    line-height: 0.98;
+    letter-spacing: -0.045em;
+  }
+
+  /*
+    Dlhé slovo „PÄŤHVIEZDIČKOVÝ“ sa na úzkom mobile
+    zmenší bez toho, aby vytvorilo horizontálny posuvník.
+  */
+  .luxury-hero-title strong:first-child,
+  .luxury-hero-title span:first-child,
+  .hero-title strong:first-child,
+  .hero-title span:first-child {
+    font-size: 0.84em;
+    letter-spacing: -0.055em;
+  }
+
+  .luxury-hero-title strong,
+  .hero-title strong {
+    margin-block: 5px;
+  }
+
+  .luxury-hero-description,
+  .hero-text {
+    max-width: 100%;
+    margin-top: 20px;
+    padding-left: 13px;
+    font-size: 13px;
+    line-height: 1.62;
+  }
+
+  .luxury-hero-actions,
+  .hero-actions {
+    width: 100%;
+    margin-top: 23px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .luxury-button,
+  .hero-actions .button {
+    width: 100%;
+    min-height: 50px;
+    padding-inline: 16px;
+  }
+
+  .luxury-hero-trust {
+    margin-top: 27px;
+    gap: 14px;
+  }
+}
+
+/* Veľmi úzky mobil */
+@media (max-width: 390px) {
+  .luxury-hero-container,
+  .hero-content {
+    width: calc(100% - 22px);
+    padding-top: 110px;
+    padding-bottom: 42px;
+  }
+
+  .luxury-hero-title,
+  .hero-title {
+    font-size: clamp(31px, 10.2vw, 40px);
+    line-height: 1;
+  }
+
+  .luxury-hero-title strong:first-child,
+  .luxury-hero-title span:first-child,
+  .hero-title strong:first-child,
+  .hero-title span:first-child {
+    font-size: 0.8em;
+    letter-spacing: -0.06em;
+  }
+
+  .luxury-hero-description,
+  .hero-text {
+    font-size: 12px;
+  }
+}
+
+.package-extras {
+  margin: 24px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.package-extras h4 {
+  color: #fff;
+  margin-bottom: 8px;
+  font-size: 20px;
+}
+
+.package-extras span {
+  display: block;
+  color: #d6d6d6;
+  font-size: 15px;
 }
