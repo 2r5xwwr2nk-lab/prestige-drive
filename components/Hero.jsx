@@ -1,8 +1,11 @@
 "use client";
 
 import Link from "next/link";
+import { useLanguage } from "./LanguageProvider";
 
 export default function Hero() {
+  const { t } = useLanguage();
+
   return (
     <section className="prestige-hero">
       <div className="prestige-hero-image" aria-hidden="true" />
@@ -14,33 +17,31 @@ export default function Hero() {
           <div className="prestige-hero-rating">
             <span
               className="prestige-stars"
-              aria-label="Päť hviezdičiek"
+              aria-label={t.hero.starsAria}
             >
               ★★★★★
             </span>
 
             <span className="prestige-rating-text">
-              Prémiová svadobná doprava
+              {t.hero.ratingText}
             </span>
           </div>
 
           <p className="prestige-hero-label">
-            VIAC NEŽ LEN ODVOZ.
+            {t.hero.eyebrow}
           </p>
 
           <h1>
-            <span>PÄŤHVIEZDIČKOVÝ</span>
-            ZÁŽITOK
-            <small>NA KOLESÁCH.</small>
+            <span>{t.hero.titleTop}</span>
+            {t.hero.titleMain}
+            <small>{t.hero.titleBottom}</small>
           </h1>
 
           <p className="prestige-hero-description">
-            Luxusné svadobné vozidlo, profesionálny šofér v obleku,
-            šampanské na privítanie a VIP červený koberec.
+            {t.hero.descriptionOne}
             <br />
             <br />
-            Každý detail pripravíme tak, aby bol váš výnimočný deň
-            ešte nezabudnuteľnejší.
+            {t.hero.descriptionTwo}
           </p>
 
           <div className="prestige-hero-actions">
@@ -48,7 +49,7 @@ export default function Hero() {
               href="/kontakt"
               className="prestige-button-primary"
             >
-              Overiť dostupnosť termínu
+              {t.hero.primaryButton}
               <span aria-hidden="true">→</span>
             </Link>
 
@@ -56,24 +57,24 @@ export default function Hero() {
               href="/sluzby"
               className="prestige-button-secondary"
             >
-              Pozrieť služby
+              {t.hero.secondaryButton}
             </Link>
           </div>
 
           <div className="prestige-hero-details">
             <div>
               <strong>24 / 7</strong>
-              <span>Dostupnosť</span>
+              <span>{t.hero.availability}</span>
             </div>
 
             <div>
               <strong>100 %</strong>
-              <span>Diskrétnosť</span>
+              <span>{t.hero.discretion}</span>
             </div>
 
             <div>
               <strong>VIP</strong>
-              <span>Osobný servis</span>
+              <span>{t.hero.personalService}</span>
             </div>
           </div>
         </div>
@@ -81,7 +82,7 @@ export default function Hero() {
 
       <div className="prestige-scroll" aria-hidden="true">
         <span />
-        <p>Objavte Prestige</p>
+        <p>{t.hero.discover}</p>
       </div>
 
       <style jsx>{`

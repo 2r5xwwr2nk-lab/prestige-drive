@@ -12,40 +12,45 @@ import { translations } from "../data/translations";
 
 const LanguageContext = createContext(null);
 
+const DEFAULT_LANGUAGE = "sk";
+const STORAGE_KEY = "prestige-language";
+
 export function LanguageProvider({ children }) {
-  const [language, setLanguageState] = useState("sk");
+  const [language, setLanguageState] = useState(DEFAULT_LANGUAGE);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const savedLanguage = localStorage.getItem("prestige-language");
+    const savedLanguage = localStorage.getItem(STORAGE_KEY);
 
-    if (savedLanguage && translations[savedLanguage]) {
-      setLanguageState(savedLanguage);
-      document.documentElement.lang = savedLanguage;
-    }
+    const initialLanguage =
+      savedLanguage && translations[savedLanguage]
+        ? savedLanguage
+        : DEFAULT_LANGUAGE;
 
+    setLanguageState(initialLanguage);
+    document.documentElement.lang = initialLanguage;
     setMounted(true);
   }, []);
 
-  const setLanguage = (newLanguage) => {
+  function setLanguage(newLanguage) {
     if (!translations[newLanguage]) {
       return;
     }
 
     setLanguageState(newLanguage);
-    localStorage.setItem("prestige-language", newLanguage);
+    localStorage.setItem(STORAGE_KEY, newLanguage);
     document.documentElement.lang = newLanguage;
-  };
+  }
+
+  const activeLanguage = mounted ? language : DEFAULT_LANGUAGE;
 
   const value = useMemo(
     () => ({
-      language: mounted ? language : "sk",
+      language: activeLanguage,
       setLanguage,
-      t: mounted
-        ? translations[language] || translations.sk
-        : translations.sk,
+      t: translations[activeLanguage] ?? translations[DEFAULT_LANGUAGE],
     }),
-    [language, mounted]
+    [activeLanguage]
   );
 
   return (

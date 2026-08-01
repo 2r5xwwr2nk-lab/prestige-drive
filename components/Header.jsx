@@ -4,18 +4,33 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-const navigation = [
-  { href: "/", label: "Domov" },
-  { href: "/sluzby", label: "Služby" },
-  { href: "/galeria", label: "Galéria" },
-  { href: "/kontakt", label: "Kontakt" },
-];
+import { useLanguage } from "./LanguageProvider";
 
 export default function Header() {
   const pathname = usePathname();
+  const { language, setLanguage, t } = useLanguage();
+
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  const navigation = [
+    {
+      href: "/",
+      label: t.nav.home,
+    },
+    {
+      href: "/sluzby",
+      label: t.nav.services,
+    },
+    {
+      href: "/galeria",
+      label: t.nav.gallery,
+    },
+    {
+      href: "/kontakt",
+      label: t.nav.contact,
+    },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -53,6 +68,11 @@ export default function Header() {
     return pathname.startsWith(href);
   }
 
+  function handleLanguageChange(newLanguage) {
+    setLanguage(newLanguage);
+    setMenuOpen(false);
+  }
+
   return (
     <header
       className={`site-header ${
@@ -60,11 +80,11 @@ export default function Header() {
       }`}
     >
       <div className="page-container site-header-inner">
-
         <Link
           href="/"
           className="site-logo"
-          aria-label="Prestige – domov"
+          aria-label={t.header.homeAria}
+          onClick={() => setMenuOpen(false)}
         >
           <div className="site-logo-image">
             <Image
@@ -83,11 +103,15 @@ export default function Header() {
             menuOpen ? "is-open" : ""
           }`}
           aria-label={
-            menuOpen ? "Zatvoriť menu" : "Otvoriť menu"
+            menuOpen
+              ? t.header.closeMenu
+              : t.header.openMenu
           }
           aria-expanded={menuOpen}
           aria-controls="main-navigation"
-          onClick={() => setMenuOpen((current) => !current)}
+          onClick={() => {
+            setMenuOpen((current) => !current);
+          }}
         >
           <span />
           <span />
@@ -102,28 +126,48 @@ export default function Header() {
         >
           <nav
             className="site-navigation"
-            aria-label="Hlavná navigácia"
+            aria-label={t.header.navigationAria}
           >
             {navigation.map((item) => (
               <Link
                 href={item.href}
                 key={item.href}
                 className={isActive(item.href) ? "active" : ""}
+                onClick={() => setMenuOpen(false)}
               >
                 {item.label}
               </Link>
             ))}
           </nav>
 
+          <div
+            className="language-switcher"
+            aria-label="Výber jazyka"
+          >
+            {["sk", "en", "de"].map((item) => (
+              <button
+                key={item}
+                type="button"
+                className={
+                  language === item ? "active" : ""
+                }
+                aria-pressed={language === item}
+                aria-label={`Zmeniť jazyk na ${item.toUpperCase()}`}
+                onClick={() => handleLanguageChange(item)}
+              >
+                {item.toUpperCase()}
+              </button>
+            ))}
+          </div>
+
           <a
             href="tel:+421947969596"
             className="site-header-phone"
           >
-            <span>Rezervácie</span>
+            <span>{t.header.reservations}</span>
             <strong>0947 969 596</strong>
           </a>
         </div>
-
       </div>
     </header>
   );
