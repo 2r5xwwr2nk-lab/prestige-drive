@@ -506,6 +506,7 @@ export default function Hero() {
           .prestige-hero {
             min-height: 100svh;
             align-items: flex-end;
+            overflow-x: clip;
           }
 
           .prestige-hero-image {
@@ -531,8 +532,16 @@ export default function Hero() {
           }
 
           .prestige-hero-container {
-            width: min(100% - 32px, 600px);
+            width: calc(100% - 40px);
+            max-width: 600px;
             padding: 128px 0 48px;
+            overflow: visible;
+          }
+
+          .prestige-hero-content {
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
           }
 
           .prestige-hero-rating {
@@ -541,11 +550,14 @@ export default function Hero() {
           }
 
           .prestige-stars {
+            flex-shrink: 0;
             font-size: 10px;
           }
 
           .prestige-rating-text {
+            min-width: 0;
             font-size: 7px;
+            line-height: 1.45;
             letter-spacing: 0.13em;
           }
 
@@ -556,17 +568,30 @@ export default function Hero() {
           }
 
           .prestige-hero h1 {
-            font-size: clamp(41px, 11.7vw, 58px);
-            line-height: 0.97;
-            letter-spacing: -0.04em;
+            width: 100%;
+            max-width: 100%;
+            font-size: clamp(34px, 9.2vw, 44px);
+            line-height: 1;
+            letter-spacing: -0.035em;
+            overflow-wrap: normal;
+            word-break: normal;
+          }
+
+          .prestige-hero h1 > span {
+            max-width: 100%;
+            font-size: 0.9em;
+            letter-spacing: -0.045em;
+            white-space: normal;
           }
 
           .prestige-hero h1 small {
-            margin-top: 8px;
-            font-size: 0.5em;
+            margin-top: 10px;
+            font-size: 0.55em;
+            line-height: 1.1;
           }
 
           .prestige-hero-description {
+            max-width: 100%;
             margin-top: 22px;
             padding-left: 14px;
             font-size: 13px;
@@ -586,11 +611,14 @@ export default function Hero() {
           }
 
           .prestige-hero-details {
+            width: 100%;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
             margin-top: 29px;
             padding-top: 18px;
           }
 
           .prestige-hero-details div {
+            min-width: 0;
             padding-right: 8px;
           }
 
@@ -604,13 +632,23 @@ export default function Hero() {
 
           .prestige-hero-details span {
             font-size: 6px;
-            letter-spacing: 0.09em;
+            line-height: 1.35;
+            letter-spacing: 0.07em;
+            overflow-wrap: anywhere;
           }
         }
 
         @media (max-width: 390px) {
+          .prestige-hero-container {
+            width: calc(100% - 32px);
+          }
+
           .prestige-hero h1 {
-            font-size: clamp(37px, 11vw, 45px);
+            font-size: clamp(30px, 8.8vw, 36px);
+          }
+
+          .prestige-hero h1 > span {
+            font-size: 0.88em;
           }
 
           .prestige-rating-text {

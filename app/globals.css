@@ -6680,3 +6680,152 @@ main {
     font-size: 11px;
   }
 }
+/* OPRAVA MOBILNÉHO MENU – vlož úplne na koniec app/globals.css */
+
+@media (max-width: 850px) {
+  .site-header {
+    z-index: 99999 !important;
+    overflow: visible !important;
+  }
+
+  .site-header .site-header-inner {
+    position: relative !important;
+    z-index: 2 !important;
+    min-height: 76px !important;
+  }
+
+  .site-header .site-logo,
+  .site-header .menu-toggle {
+    position: relative !important;
+    z-index: 100001 !important;
+  }
+
+  .site-header .site-header-menu {
+    position: fixed !important;
+    z-index: 100000 !important;
+    inset: 76px 0 0 !important;
+
+    width: 100% !important;
+    height: calc(100dvh - 76px) !important;
+    min-height: 0 !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+    gap: 18px !important;
+
+    padding:
+      22px
+      max(24px, env(safe-area-inset-right))
+      calc(24px + env(safe-area-inset-bottom))
+      max(24px, env(safe-area-inset-left)) !important;
+
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    overscroll-behavior: contain !important;
+    -webkit-overflow-scrolling: touch !important;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.07) !important;
+    background:
+      radial-gradient(
+        circle at 88% 4%,
+        rgba(198, 161, 91, 0.13),
+        transparent 30%
+      ),
+      #050505 !important;
+
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transform: translateX(100%) !important;
+
+    transition:
+      transform 0.32s ease,
+      opacity 0.25s ease,
+      visibility 0.25s ease !important;
+  }
+
+  .site-header .site-header-menu.is-open {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: translateX(0) !important;
+  }
+
+  .site-header .site-navigation {
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    align-items: stretch !important;
+    gap: 0 !important;
+  }
+
+  .site-header .site-navigation a {
+    width: 100% !important;
+    min-height: 68px !important;
+    display: flex !important;
+    align-items: center !important;
+
+    padding: 14px 0 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.09) !important;
+
+    color: #f0ece4 !important;
+    font-family: var(--font-heading), Georgia, serif !important;
+    font-size: clamp(27px, 8vw, 38px) !important;
+    font-weight: 400 !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.02em !important;
+    text-transform: none !important;
+    white-space: normal !important;
+  }
+
+  .site-header .site-navigation a::after {
+    display: none !important;
+  }
+
+  .site-header .site-navigation a.active {
+    color: var(--gold-light) !important;
+  }
+
+  .site-header .language-switcher {
+    width: 100% !important;
+    margin: 4px 0 0 !important;
+    display: flex !important;
+    justify-content: flex-start !important;
+    gap: 10px !important;
+  }
+
+  .site-header .language-switcher button {
+    min-width: 48px !important;
+    height: 40px !important;
+    padding: 0 10px !important;
+    font-size: 11px !important;
+  }
+
+  .site-header .site-header-phone {
+    width: 100% !important;
+    min-height: 64px !important;
+    margin-top: auto !important;
+    flex-shrink: 0 !important;
+    display: grid !important;
+    place-content: center !important;
+    text-align: center !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .site-header .site-header-menu {
+    padding-top: 16px !important;
+    gap: 12px !important;
+  }
+
+  .site-header .site-navigation a {
+    min-height: 60px !important;
+    font-size: clamp(25px, 7.7vw, 32px) !important;
+  }
+
+  .site-header .site-header-phone {
+    min-height: 58px !important;
+  }
+}
