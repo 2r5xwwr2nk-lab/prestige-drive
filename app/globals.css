@@ -696,18 +696,14 @@ main {
   transform: translateY(-7px);
 }
 
-.service-card-wedding,
-.service-card-vip {
-  background-image:
-    url("/images/hero-volvo.png");
-}
-
 .service-card-wedding {
+  background-image: url("/images/hero-volvo.png");
   background-position: 60% center;
 }
 
 .service-card-vip {
-  background-position: 80% center;
+  background-image: url("/images/8b581e8d-1069-4a35-93d5-a160ea259ad3-1_all_17940.jpg");
+  background-position: center;
 }
 
 .service-overlay {
@@ -6828,4 +6824,64 @@ main {
   .site-header .site-header-phone {
     min-height: 58px !important;
   }
+}
+/* ========================================
+   HEADER - NOVÉ ERBOVÉ LOGO
+======================================== */
+
+.site-header {
+  height: 76px;
+}
+
+.site-header-inner {
+  height: 76px;
+}
+
+.site-logo.site-logo-new {
+  width: auto !important;
+  height: 76px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  overflow: visible !important;
+}
+
+.site-logo .site-logo-image.site-logo-image-new {
+  position: relative !important;
+  width: 64px !important;
+  height: 64px !important;
+  max-width: 64px !important;
+  min-width: 64px !important;
+  overflow: visible !important;
+}
+
+.site-logo-image-new img {
+  object-fit: contain !important;
+  object-position: center !important;
+}
+
+/* MOBIL */
+@media (max-width: 700px) {
+  .site-header,
+  .site-header-inner {
+    height: 70px;
+  }
+
+  .site-logo.site-logo-new {
+    height: 70px !important;
+  }
+
+  .site-logo .site-logo-image.site-logo-image-new {
+    width: 56px !important;
+    height: 56px !important;
+    max-width: 56px !important;
+    min-width: 56px !important;
+  }
+}
+/* VIP EXECUTIVE TRAVEL - NOVÁ FOTKA */
+.service-card-vip {
+  background-image: url("/images/image0 (2).jpeg") !important;
+  background-position: center !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
 }

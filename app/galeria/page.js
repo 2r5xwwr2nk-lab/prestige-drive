@@ -68,7 +68,7 @@ export default function GaleriaPage() {
               </p>
 
               <h1>
-                {t.galleryPage.titleTop}
+                {t.galleryPage.titleTop}{" "}
                 <span>{t.galleryPage.titleBottom}</span>
               </h1>
             </div>

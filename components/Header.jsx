@@ -82,17 +82,20 @@ export default function Header() {
       <div className="page-container site-header-inner">
         <Link
           href="/"
-          className="site-logo"
+          className="site-logo site-logo-new"
           aria-label={t.header.homeAria}
           onClick={() => setMenuOpen(false)}
         >
-          <div className="site-logo-image">
+          <div className="site-logo-image site-logo-image-new">
             <Image
-              src="/images/logo-header.png"
-              alt="Prestige Wedding Cars & VIP Executive Travel"
+              src="/images/nove_logo.png"
+              alt="Prestige Drive"
               fill
               priority
-              sizes="300px"
+              sizes="90px"
+              style={{
+                objectFit: "contain",
+              }}
             />
           </div>
         </Link>
@@ -165,7 +168,7 @@ export default function Header() {
             className="site-header-phone"
           >
             <span>{t.header.reservations}</span>
-            <strong>0947 969 596</strong>
+            <strong>+421 947 969 596</strong>
           </a>
         </div>
       </div>
