@@ -207,9 +207,9 @@ export const translations = {
       socialsTitle: "Sledujte Prestige.",
 
       instagramAria:
-        "Otvoriť Instagram Prestige Slovakia",
+        "Otvoriť Instagram Prestige Drive",
       facebookAria:
-        "Otvoriť Facebook Prestige",
+        "Otvoriť Facebook Prestige Drive",
 
       mapTitle:
         "Prestige – Vajanského 607/2, Hriňová",
@@ -662,9 +662,9 @@ export const translations = {
       socialsTitle: "Follow Prestige.",
 
       instagramAria:
-        "Open Prestige Slovakia on Instagram",
+        "Open Prestige Drive on Instagram",
       facebookAria:
-        "Open Prestige on Facebook",
+        "Open Prestige Drive on Facebook",
 
       mapTitle:
         "Prestige – Vajanského 607/2, Hriňová",
@@ -1117,9 +1117,9 @@ export const translations = {
       socialsTitle: "Folgen Sie Prestige.",
 
       instagramAria:
-        "Instagram von Prestige Slovakia öffnen",
+        "Instagram von Prestige Drive öffnen",
       facebookAria:
-        "Facebook von Prestige öffnen",
+        "Facebook von  Drive öffnen",
 
       mapTitle:
         "Prestige – Vajanského 607/2, Hriňová",

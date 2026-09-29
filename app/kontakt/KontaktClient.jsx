@@ -134,7 +134,7 @@ export default function KontaktClient() {
 
                   <span className="contact-social-copy">
                     <small>Instagram</small>
-                    <strong>@prestigeslovakia</strong>
+                    <strong>@prestigedrivesk</strong>
                   </span>
 
                   <span
@@ -158,7 +158,7 @@ export default function KontaktClient() {
 
                   <span className="contact-social-copy">
                     <small>Facebook</small>
-                    <strong>Prestige Slovakia</strong>
+                    <strong>Prestige Drive</strong>
                   </span>
 
                   <span
