@@ -121,12 +121,14 @@ export default function KontaktClient() {
               </div>
 
               <div className="contact-socials-list">
+
+                {/* INSTAGRAM */}
                 <a
-                  href="https://www.instagram.com/prestigeslovakia?igsh=emtsaDYybzk1d2hz"
+                  href="https://www.instagram.com/prestigedrivesk/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="contact-social-link"
-                  aria-label={page.instagramAria}
+                  aria-label="Instagram Prestige Drive"
                 >
                   <span className="contact-social-icon">
                     <InstagramIcon />
@@ -145,12 +147,13 @@ export default function KontaktClient() {
                   </span>
                 </a>
 
+                {/* FACEBOOK */}
                 <a
                   href="https://www.facebook.com/share/184uerGhJT/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="contact-social-link"
-                  aria-label={page.facebookAria}
+                  aria-label="Facebook Prestige Drive"
                 >
                   <span className="contact-social-icon">
                     <FacebookIcon />
